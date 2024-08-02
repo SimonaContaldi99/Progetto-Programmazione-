@@ -23,6 +23,8 @@ def calcola():
 
         # Creazione del grafico a torta
         crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
+        # Creazione del grafico a torta
+        crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
 
         # Lettura del file CSV
         df = pd.read_csv('ricette_passaggi.csv')

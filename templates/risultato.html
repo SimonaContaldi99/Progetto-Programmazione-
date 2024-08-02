@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultato Calcolo Calorico</title>
+    <style>
+        .procedimento {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleProcedimento(id) {
+            var procedimentoElement = document.getElementById(id);
+            if (procedimentoElement.style.display === "none") {
+                procedimentoElement.style.display = "block";
+            } else {
+                procedimentoElement.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Risultato Calcolo Calorico</h1>
+    <p><strong>BMR:</strong> {{ bmr }} kcal</p>
+    <p><strong>TDEE:</strong> {{ tdee }} kcal</p>
+    <h2>Ripartizione Calorica Giornaliera</h2>
+    <ul>
+        <li><strong>Colazione:</strong> {{ colazione }} kcal</li>
+        <li><strong>Pranzo:</strong> {{ pranzo }} kcal</li>
+        <li><strong>Cena:</strong> {{ cena }} kcal</li>
+        <li><strong>Spuntino:</strong> {{ spuntino }} kcal</li>
+    </ul>
+    <h2>Grafico della ripartizione calorica</h2>
+    <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}" alt="Grafico Ripartizione Calorica">
+
+    <h2>Menu Settimanale</h2>
+    {% for giorno, pasti in menu_settimanale.items() %}
+        <h3>{{ giorno }}</h3>
+        <h4>Colazione</h4>
+        <ul>
+            {% for ricetta in pasti['Colazione'] %}
+                <li>
+                    <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                    <button onclick="toggleProcedimento('procedimento-colazione-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                    <div id="procedimento-colazione-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                        <p>{{ ricetta['Descrizione'] }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <h4>Pranzo</h4>
+        <ul>
+            {% for ricetta in pasti['Pranzo'] %}
+                <li>
+                    <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                    <button onclick="toggleProcedimento('procedimento-pranzo-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                    <div id="procedimento-pranzo-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                        <p>{{ ricetta['Descrizione'] }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h4>Cena</h4>
+        <ul>
+            {% for ricetta in pasti['Cena'] %}
+                <li>
+                    <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                    <button onclick="toggleProcedimento('procedimento-cena-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                    <div id="procedimento-cena-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                        <p>{{ ricetta['Descrizione'] }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h4>Spuntino</h4>
+        <ul>
+            {% for ricetta in pasti['Spuntino'] %}
+                <li>
+                    <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                    <button onclick="toggleProcedimento('procedimento-spuntino-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                    <div id="procedimento-spuntino-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                        <p>{{ ricetta['Descrizione'] }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    
+    <a href="/">Torna indietro</a>
+</body>
+</html>
+
+

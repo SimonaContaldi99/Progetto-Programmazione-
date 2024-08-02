@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Calorico</title>
+</head>
+<body>
+    <h1>Calcolo Calorico</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/calcola" method="POST">
+        <label for="sesso">Sesso (M/F):</label>
+        <input type="text" id="sesso" name="sesso" required><br>
+        <label for="età">Età:</label>
+        <input type="number" id="età" name="età" required><br>
+        <label for="altezza">Altezza (cm):</label>
+        <input type="number" id="altezza" name="altezza" required><br>
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" required><br>
+        <label for="livello_attività">Livello di attività (1-5):</label>
+        <input type="number" id="livello_attività" name="livello_attività" required><br>
+        <input type="submit" value="Calcola">
+    </form>
+</body>
+</html>

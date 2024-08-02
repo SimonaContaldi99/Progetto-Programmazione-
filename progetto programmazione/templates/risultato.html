@@ -34,7 +34,10 @@
     </ul>
     <h2>Grafico della ripartizione calorica</h2>
     <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}" alt="Grafico Ripartizione Calorica">
-
+    </ul>
+    <h2>Ripartizione calorica per kcal</h2>
+    <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" alt="Grafico Ripartizione Calorica">
+    </ul>
     <h2>Menu Settimanale</h2>
     {% for giorno, pasti in menu_settimanale.items() %}
         <h3>{{ giorno }}</h3>

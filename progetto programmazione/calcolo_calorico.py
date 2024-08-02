@@ -35,3 +35,15 @@ def crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, filepath):
     plt.title("Grafico della ripartizione calorica")
     plt.savefig(filepath)
     plt.close()
+
+def crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, filepath):
+    colori = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    dati = [colazione, pranzo, cena, spuntino]
+    pasti = ["Colazione", "Pranzo", "Cena", "Spuntino"]
+    
+    plt.bar(pasti, dati, color=colori)
+    plt.title("Ripartizione calorica per kcal")
+    plt.xlabel("Pasto")
+    plt.ylabel("Calorie")
+    plt.savefig(filepath)
+    plt.close()

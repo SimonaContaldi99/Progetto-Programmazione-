@@ -1,13 +1,13 @@
 import pandas as pd
 from flask import Flask, render_template, request
-from calcolo_calorico import calcolo_bmr, calcola_tdee, ripartizione_calorica, crea_grafico_ripartizione
+from calcolo_calorico import calcolo_bmr, calcola_tdee, ripartizione_calorica, crea_grafico_ripartizione, crea_grafico_ripartizione_barre
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template('index.html')
-#richiesta input dati personali
+
 @app.route('/calcola', methods=['POST'])
 def calcola():
     sesso = request.form['sesso']
@@ -23,7 +23,6 @@ def calcola():
 
         # Creazione del grafico a torta
         crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
-        # Creazione del grafico a torta
         crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
 
         # Lettura del file CSV
@@ -38,16 +37,31 @@ def calcola():
 
         # Creazione delle ricette per ogni giorno della settimana
         menu_settimanale = {giorno: {
-            'Colazione': filtra_ricette('Colazione', colazione),
-            'Pranzo': filtra_ricette('Pranzo', pranzo),
-            'Cena': filtra_ricette('Cena', cena),
-            'Spuntino': filtra_ricette('Spuntino', spuntino)
+            'Colazione': pd.DataFrame(filtra_ricette('Colazione', colazione)),
+            'Pranzo': pd.DataFrame(filtra_ricette('Pranzo', pranzo)),
+            'Cena': pd.DataFrame(filtra_ricette('Cena', cena)),
+            'Spuntino': pd.DataFrame(filtra_ricette('Spuntino', spuntino))
         } for giorno in giorni_settimana}
 
+        def media_kcal(settimana):
+            media_calorie = {}
+            for giorno, pasti in settimana.items():
+                media_calorie[giorno] = {}
+                for pasto, ricette in pasti.items():
+                    if not ricette.empty:
+                        media_calorie[giorno][pasto] = ricette['Calorie'].mean()
+                    else:
+                        media_calorie[giorno][pasto] = None
+            return media_calorie
+
+        media_calorie = media_kcal(menu_settimanale)
+
+        # Renderizza il template con i risultati
         return render_template('risultato.html', 
                                bmr=bmr, tdee=tdee,
                                colazione=colazione, pranzo=pranzo, cena=cena, spuntino=spuntino,
-                               menu_settimanale=menu_settimanale)
+                               menu_settimanale=menu_settimanale,
+                               media_kcal=media_kcal)
     
     except ValueError as e:
         error_message = str(e)

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risultato Calcolo Calorico</title>
     <style>
-        .procedimento {
+        .procedimento, .grafico-bilancio {
             display: none;
             margin-top: 10px;
         }
@@ -17,6 +16,15 @@
                 procedimentoElement.style.display = "block";
             } else {
                 procedimentoElement.style.display = "none";
+            }
+        }
+
+        function toggleBilancio(id) {
+            var graficoElement = document.getElementById(id);
+            if (graficoElement.style.display === "none") {
+                graficoElement.style.display = "block";
+            } else {
+                graficoElement.style.display = "none";
             }
         }
     </script>
@@ -32,15 +40,20 @@
         <li><strong>Cena:</strong> {{ cena }} kcal</li>
         <li><strong>Spuntino:</strong> {{ spuntino }} kcal</li>
     </ul>
-    <h2>Grafico della ripartizione calorica</h2>
-    <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}" alt="Grafico Ripartizione Calorica">
-    </ul>
-    <h2>Ripartizione calorica per kcal</h2>
-    <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" alt="Grafico Ripartizione Calorica">
-    </ul>
+    <h2>Ripartizione calorica giornaliera</h2>
+    <div style="text-align: left;">
+    <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}"
+    style="width: 35%; height: auto; display: inline-block; margin-right: 10px;">
+    <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" 
+    style="width: 35%; height: auto; display: inline-block;">
+    
     <h2>Menu Settimanale</h2>
     {% for giorno, pasti in menu_settimanale.items() %}
         <h3>{{ giorno }}</h3>
+        <button onclick="toggleBilancio('grafico-bilancio-{{ giorno }}')">BILANCIO</button>
+        <div id="grafico-bilancio-{{ giorno }}" class="grafico-bilancio">
+            <img src="{{ url_for('static', filename='grafico_bilancio_' + giorno + '.png') }}" alt="Grafico Bilancio {{ giorno }}">
+        </div>
         <h4>Colazione</h4>
         <ul>
             {% for ricetta in pasti['Colazione'] %}

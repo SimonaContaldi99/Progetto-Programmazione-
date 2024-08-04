@@ -37,8 +37,8 @@
     <ul>
         <li><strong>Colazione:</strong> {{ colazione }} kcal</li>
         <li><strong>Pranzo:</strong> {{ pranzo }} kcal</li>
-        <li><strong>Cena:</strong> {{ cena }} kcal</li>
         <li><strong>Spuntino:</strong> {{ spuntino }} kcal</li>
+        <li><strong>Cena:</strong> {{ cena }} kcal</li>
     </ul>
     <h2>Ripartizione calorica giornaliera</h2>
     <div style="text-align: left;">
@@ -80,7 +80,16 @@
                 </li>
             {% endfor %}
         </ul>
-
+        <h4>Spuntino</h4>
+        <ul>
+            {% for ricetta in pasti['Spuntino'] %}
+                <li>
+                    <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                    <button onclick="toggleProcedimento('procedimento-spuntino-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                    <div id="procedimento-spuntino-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                        <p>{{ ricetta['Descrizione'] }}</p>
+                    </div>
+                </li>
         <h4>Cena</h4>
         <ul>
             {% for ricetta in pasti['Cena'] %}
@@ -93,17 +102,7 @@
                 </li>
             {% endfor %}
         </ul>
-
-        <h4>Spuntino</h4>
-        <ul>
-            {% for ricetta in pasti['Spuntino'] %}
-                <li>
-                    <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
-                    <button onclick="toggleProcedimento('procedimento-spuntino-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
-                    <div id="procedimento-spuntino-{{ giorno }}-{{ loop.index }}" class="procedimento">
-                        <p>{{ ricetta['Descrizione'] }}</p>
-                    </div>
-                </li>
+        
             {% endfor %}
         </ul>
     {% endfor %}

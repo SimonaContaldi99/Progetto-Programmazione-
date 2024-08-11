@@ -1,25 +1,25 @@
 Tipo,Ricetta,Calorie,Descrizione
-Colazione,Avocado Toast con Pomodorini,250,Spalmare avocado su pane tostato e guarnire con pomodorini freschi e sale.
+Colazione,Avocado Toast con Pomodorini,250,"Schiaccia l'avocado e aggiungi condimenti a piacimento. Spalma il guacamole sul pane (se vuoi tostalo). Taglia dei pomodorini e aggiungili sul pane."
 Colazione,Yogurt con Muesli e Frutta,300,Mescolare yogurt con muesli e aggiungere frutta fresca.
 Colazione,Frullato di Spinaci e Ananas,220,Frullare spinaci con ananas e un po' di acqua per una bevanda fresca.
-Colazione,Pancake ai Mirtilli,350,Preparare pancake e guarnire con mirtilli freschi e sciroppo d'acero.
+Colazione,Pancake ai Mirtilli,350,Prepara i pancake mescolando in una ciotola uova e zucchero. Aggiungi il latte e il lievito chimico e continua a mescolare. Aggiungi la farina e mescola. Lascia riposare per 30 minuti. Scalda una padella con una noce di burro e cuoci i pancake. Guarnisci con mirtili o con ciò che preferisci.
 Colazione,Overnight Oats con Semi di Chia,250,Mixare avena con latte e semi di chia e lasciare in frigo per una notte.
-Colazione,Toast con Uova Strapazzate,300,Preparare uova strapazzate e servirle su toast integrale.
+Colazione,Toast con Uova Strapazzate,300,Rompi le uova in un tegame. Aggiungi un cucchiaio di latte e sbatti per qualche minuti. Aggiusta di sale e pepe. Cuoci le uova mescolandole così da strapazzarle. A parte tosta del pane e unisci il tutto.
 Colazione,Frullato di Banana e Avena,240,Frullare banana con avena e latte per una colazione nutriente.
 Colazione,Yogurt con Frutta Secca,280,Mescolare yogurt con una selezione di frutta secca e un po' di miele.
 Colazione,Chia Pudding con Frutta,300,Preparare pudding di semi di chia e guarnire con frutta fresca.
 Colazione,Toast con Ricotta e Miele,250,Spalmare ricotta su toast e aggiungere miele e noci.
-Colazione,Panino con Uova e Spinaci,350,Preparare un panino con uova strapazzate e spinaci freschi.
+Colazione,Panino con Uova e Spinaci,350,Per strapazzare le uova: Rompi le uova in un tegame. Aggiungi un cucchiaio di latte e sbatti per qualche minuti. Aggiusta di sale e pepe. Cuoci le uova mescolandole così da strapazzarle. A parte cuoci gli spinaci con una noce di burro. Unisci tutto in un panino.
 Colazione,Frutta Fresca con Yogurt Greco,220,Servire una ciotola di frutta fresca con yogurt greco.
-Colazione,Porridge con Frutta Secca,260,Preparare porridge e aggiungere frutta secca e un po' di miele.
+Colazione,Porridge con Frutta Secca,260,Per preparare il porridge comincia unendo i fiocchi d'avena e il latte in un pentolino. Cuoci per qualche minuto finchè non si addensa mescolando continuamente. Una volta pronto versa in una ciotola e guarnisci con frutta secca a piacere.
 Colazione,Toast con Burro di Arachidi e Banana,300,Spalmare burro di arachidi su toast e aggiungere fette di banana.
 Colazione,Frullato di Fragole e Yogurt,240,Frullare fragole con yogurt e un po' di miele per una bevanda fresca.
-Colazione,Pancake con Sciroppo d’Acero,350,Preparare pancake e servirli con sciroppo d’acero e frutta.
-Colazione,Avocado Toast con Uovo in Camicia,350,Spalmare avocado su pane tostato e aggiungere un uovo in camicia.
+Colazione,Pancake con Sciroppo d’Acero,350,Prepara i pancake mescolando in una ciotola uova e zucchero. Aggiungi il latte e il lievito chimico e continua a mescolare. Aggiungi la farina e mescola. Lascia riposare per 30 minuti. Scalda una padella con una noce di burro e cuoci i pancake. Una volta pronti spostali su un piatto e guarniscili con sciroppo d'acero.
+Colazione,Avocado Toast con Uovo in Camicia,350,Schiaccia l'avocado e aggiungi condimenti a piacimento. Spalma il guacamole sul pane (se vuoi tostalo).Per preparare l'uovo in camicia riempi una pentola d'acqua e porta ad una leggera ebollizione. Aggiungi un  cucchiaio di aceto all'acqua bollente. Crea un vortice nell'acqua con un cucchiaio. Versa lentamente l'uovo e cuoci per 3-4 minuti. Usa una schiumarola per sollevare l'uovo e porgilo sull'avocado toast.
 Colazione,Granola con Latte di Mandorla,300,Mescolare granola con latte di mandorla e servire.
 Colazione,Yogurt con Frutta e Noci,290,Mescolare yogurt con frutta fresca e noci tritate.
 Colazione,Frullato di Mango e Banana,250,Frullare mango e banana con un po' di latte per una bevanda cremosa.
-Colazione,Porridge con Mele e Cannella,270,Preparare porridge e aggiungere mele a cubetti e cannella.
+Colazione,Porridge con Mele e Cannella,270,Per preparare il porridge comincia unendo i fiocchi d'avena e il latte in un pentolino. Cuoci per qualche minuto finchè non si addensa mescolando continuamente. Una volta pronto versa in una ciotola e condisci con mele a cubetti e cannella.
 Colazione,Toast con Marmellata e Burro,250,Spalmare burro e marmellata su toast per una colazione dolce.
 Colazione,Smoothie di Kiwi e Banana,220,Frullare kiwi e banana con un po' di acqua per una bevanda rinfrescante.
 Colazione,Pancake con Ricotta e Frutta,350,Preparare pancake e guarnire con ricotta e frutta fresca.
@@ -119,7 +119,7 @@ Pranzo,Frittata di Spinaci e Pomodorini,350,Sbattere le uova con spinaci e pomod
 Pranzo,Pollo al Limone con Verdure,500,Cuocere pollo al limone e servirlo con verdure cotte al vapore.
 Pranzo,Pizza con Verdure Grigliate,600,Preparare pizza con verdure grigliate e mozzarella
 Pranzo,Insalata di Riso con Verdure e Tofu,450,Mescolare riso cotto con verdure fresche e tofu saltato
-Pranzo,Sgombro al Forno con Patate,500,Cuocere sgombro al forno con patate e aromi come rosmarino e limone.
+Pranzo,Sgombro al Forno con Patate,500,Preriscalda il forno a 200°C (390°F).Pela le patate (se preferisci) e tagliale a spicchi o a cubetti.Una volta che il forno è caldo riponi lo sgombro nella teglia e inforna. Cuoci per 30 minuti.
 Pranzo,Zuppa di Pomodoro con Basilico,300,Preparare una zuppa di pomodoro con basilico e servire calda.
 Pranzo,Polpettone di Tacchino con Purè di Patate,550,Preparare polpettone di tacchino e servirlo con purè di patate.
 Pranzo,Spaghetti con Vongole,400,Cuocere spaghetti e condirli con vongole e prezzemolo.

@@ -2,8 +2,13 @@ import pandas as pd
 from flask import Flask, render_template, request
 from calcolo_calorico import calcolo_bmr, calcola_tdee, ripartizione_calorica, crea_grafico_ripartizione, crea_grafico_ripartizione_barre
 import matplotlib.pyplot as plt
+import os
 
 app = Flask(__name__)
+
+# Ensure the static directory exists
+if not os.path.exists('static'):
+    os.makedirs('static')
 
 @app.route('/')
 def home():
@@ -12,12 +17,18 @@ def home():
 @app.route('/calcola', methods=['POST'])
 def calcola():
     sesso = request.form['sesso']
-    età = int(request.form['età'])
-    altezza = float(request.form['altezza'])
-    peso = float(request.form['peso'])
-    livello_attività = int(request.form['livello_attività'])
+    età = request.form.get('età')
+    altezza = request.form.get('altezza')
+    peso = request.form.get('peso')
+    livello_attività = request.form.get('livello_attività')
 
     try:
+        # Validate inputs
+        età = int(età)
+        altezza = float(altezza)
+        peso = float(peso)
+        livello_attività = int(livello_attività)
+
         bmr = calcolo_bmr(sesso, peso, altezza, età)
         tdee = calcola_tdee(bmr, livello_attività)
         colazione, pranzo, cena, spuntino = ripartizione_calorica(tdee)
@@ -27,16 +38,19 @@ def calcola():
         crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
 
         # Lettura del file CSV
+        if not os.path.isfile('ricette_passaggi.csv'):
+            raise FileNotFoundError("Il file 'ricette_passaggi.csv' non è stato trovato.")
+        
         df = pd.read_csv('ricette_passaggi.csv')
 
-        # Filtrare le ricette per pasto e calorie
         def filtra_ricette(tipo, calorie_max):
-            return df[(df['Tipo'] == tipo) & (df['Calorie'] <= calorie_max)].sample(3).to_dict(orient='records')
+            ricette = df[(df['Tipo'] == tipo) & (df['Calorie'] <= calorie_max)]
+            if ricette.empty:
+                return []
+            return ricette.sample(3).to_dict(orient='records')
 
-        # Giorni della settimana
         giorni_settimana = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']
 
-        # Creazione delle ricette per ogni giorno della settimana
         menu_settimanale = {giorno: {
             'Colazione': filtra_ricette('Colazione', colazione),
             'Pranzo': filtra_ricette('Pranzo', pranzo),
@@ -44,7 +58,6 @@ def calcola():
             'Spuntino': filtra_ricette('Spuntino', spuntino)
         } for giorno in giorni_settimana}
 
-        # Calcolo delle medie delle calorie
         media_kcal = {}
         for giorno, pasti in menu_settimanale.items():
             media_kcal[giorno] = {}
@@ -54,12 +67,9 @@ def calcola():
                 else:
                     media_kcal[giorno][pasto] = None
 
-        # Ordinamento degli pasti
         ordine_pasti = ["Colazione", "Pranzo", "Spuntino", "Cena"]
 
-        # Creazione dei grafici
         giorni = list(media_kcal.keys())
-
         for giorno in giorni:
             pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
             medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
@@ -72,13 +82,14 @@ def calcola():
             ax.set_xlabel("Pasti del giorno")
             ax.set_ylabel("Calorie calcolate")
             plt.savefig(f"static/grafico_{giorno}.png")
+            plt.close(fig)  # Close the figure to free up resources
 
         return render_template('risultato.html', 
                                bmr=bmr, tdee=tdee,
                                colazione=colazione, pranzo=pranzo, cena=cena, spuntino=spuntino,
                                menu_settimanale=menu_settimanale)
-    
-    except ValueError as e:
+
+    except (ValueError, FileNotFoundError) as e:
         error_message = str(e)
         return render_template('index.html', error=error_message)
 

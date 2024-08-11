@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,19 +13,15 @@
     <script>
         function toggleProcedimento(id) {
             var procedimentoElement = document.getElementById(id);
-            if (procedimentoElement.style.display === "none") {
-                procedimentoElement.style.display = "block";
-            } else {
-                procedimentoElement.style.display = "none";
+            if (procedimentoElement) {
+                procedimentoElement.style.display = procedimentoElement.style.display === "none" ? "block" : "none";
             }
         }
 
         function toggleBilancio(id) {
             var graficoElement = document.getElementById(id);
-            if (graficoElement.style.display === "none") {
-                graficoElement.style.display = "block";
-            } else {
-                graficoElement.style.display = "none";
+            if (graficoElement) {
+                graficoElement.style.display = graficoElement.style.display === "none" ? "block" : "none";
             }
         }
     </script>
@@ -33,28 +30,33 @@
     <h1>Risultato Calcolo Calorico</h1>
     <p><strong>BMR:</strong> {{ bmr }} kcal</p>
     <p><strong>TDEE:</strong> {{ tdee }} kcal</p>
+    
     <h2>Ripartizione Calorica Giornaliera</h2>
     <ul>
         <li><strong>Colazione:</strong> {{ colazione }} kcal</li>
         <li><strong>Pranzo:</strong> {{ pranzo }} kcal</li>
-        <li><strong>Cena:</strong> {{ cena }} kcal</li>
         <li><strong>Spuntino:</strong> {{ spuntino }} kcal</li>
+        <li><strong>Cena:</strong> {{ cena }} kcal</li>
     </ul>
+    
     <h2>Ripartizione calorica giornaliera</h2>
     <div style="text-align: left;">
-    <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}"
-    style="width: 35%; height: auto; display: inline-block; margin-right: 10px;">
-    <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" 
-    style="width: 35%; height: auto; display: inline-block;">
-    
+        <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}"
+             style="width: 35%; height: auto; display: inline-block; margin-right: 10px;" alt="Grafico Ripartizione">
+        <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" 
+             style="width: 35%; height: auto; display: inline-block;" alt="Grafico Ripartizione Barre">
+    </div>
+
     <h2>Menu Settimanale</h2>
     {% for giorno, pasti in menu_settimanale.items() %}
         <h3>{{ giorno }}</h3>
         <button onclick="toggleBilancio('grafico-bilancio-{{ giorno }}')">BILANCIO</button>
         <div id="grafico-bilancio-{{ giorno }}" class="grafico-bilancio">
             <img src="{{ url_for('static', filename='grafico_' + giorno + '.png') }}" alt="Grafico Bilancio {{ giorno }}"
-            style="width: 20%; height: auto; display: inline-block; margin-right: 10px;">
+                 style="width: 20%; height: auto; display: inline-block; margin-right: 10px;">
         </div>
+
+        <!-- Colazione -->
         <h4>Colazione</h4>
         <ul>
             {% for ricetta in pasti['Colazione'] %}
@@ -67,7 +69,8 @@
                 </li>
             {% endfor %}
         </ul>
-        
+
+        <!-- Pranzo -->
         <h4>Pranzo</h4>
         <ul>
             {% for ricetta in pasti['Pranzo'] %}
@@ -80,6 +83,8 @@
                 </li>
             {% endfor %}
         </ul>
+
+        <!-- Spuntino -->
         <h4>Spuntino</h4>
         <ul>
             {% for ricetta in pasti['Spuntino'] %}
@@ -90,6 +95,10 @@
                         <p>{{ ricetta['Descrizione'] }}</p>
                     </div>
                 </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Cena -->
         <h4>Cena</h4>
         <ul>
             {% for ricetta in pasti['Cena'] %}
@@ -102,12 +111,8 @@
                 </li>
             {% endfor %}
         </ul>
-        
-            {% endfor %}
-        </ul>
     {% endfor %}
-    
+
     <a href="/">Torna indietro</a>
 </body>
 </html>
-

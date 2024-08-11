@@ -22,7 +22,7 @@ def calcola():
         tdee = calcola_tdee(bmr, livello_attività)
         colazione, pranzo, cena, spuntino = ripartizione_calorica(tdee)
 
-        # Creazione del grafico a torta
+        # Creazione del grafico a torta e barre
         crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
         crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
 
@@ -54,21 +54,19 @@ def calcola():
                 else:
                     media_kcal[giorno][pasto] = None
 
+        # Ordinamento degli pasti
+        ordine_pasti = ["Colazione", "Pranzo", "Spuntino", "Cena"]
+
         # Creazione dei grafici
         giorni = list(media_kcal.keys())
-        dati = [colazione, pranzo, cena, spuntino]
-        pasti = ["Colazione", "Pranzo", "Cena", "Spuntino"]
 
         for giorno in giorni:
-            pasti_giornalieri = list(media_kcal[giorno].keys())
-            medie_pasti = []
-            for pasto in pasti_giornalieri:
-                if media_kcal[giorno][pasto] is not None:
-                    medie_pasti.append(media_kcal[giorno][pasto])
+            pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
+            medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
 
             fig, ax = plt.subplots()
             ax.plot(pasti_giornalieri, medie_pasti, label="Calorie reali")
-            ax.plot(pasti, dati, label="Calorie attese")
+            ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Calorie attese")
             ax.legend()
             ax.set_title(f"Bilancio calorie giornaliere - {giorno}")
             ax.set_xlabel("Pasti del giorno")

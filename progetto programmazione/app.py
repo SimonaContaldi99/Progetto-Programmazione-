@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-# Ensure the static directory exists
+# Creazione directory
 if not os.path.exists('static'):
     os.makedirs('static')
 
@@ -23,7 +23,7 @@ def calcola():
     livello_attività = request.form.get('livello_attività')
 
     try:
-        # Validate inputs
+        # Validazione inputs
         età = int(età)
         altezza = float(altezza)
         peso = float(peso)
@@ -42,7 +42,7 @@ def calcola():
             raise FileNotFoundError("Il file 'ricette_passaggi.csv' non è stato trovato.")
         
         df = pd.read_csv('ricette_passaggi.csv')
-
+        #definizione funzione per filtrare le ricette in base alle calorie
         def filtra_ricette(tipo, calorie_max):
             ricette = df[(df['Tipo'] == tipo) & (df['Calorie'] <= calorie_max)]
             if ricette.empty:
@@ -50,7 +50,7 @@ def calcola():
             return ricette.sample(3).to_dict(orient='records')
 
         giorni_settimana = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']
-
+        #definizione menù settimanale
         menu_settimanale = {giorno: {
             'Colazione': filtra_ricette('Colazione', colazione),
             'Pranzo': filtra_ricette('Pranzo', pranzo),
@@ -68,12 +68,12 @@ def calcola():
                     media_kcal[giorno][pasto] = None
 
         ordine_pasti = ["Colazione", "Pranzo", "Spuntino", "Cena"]
-
+        #stabilire i pasti giornalieri in base alle kcal
         giorni = list(media_kcal.keys())
         for giorno in giorni:
             pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
             medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
-
+            #creazione grafico
             fig, ax = plt.subplots()
             ax.plot(pasti_giornalieri, medie_pasti, label="Calorie reali")
             ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Calorie attese")

@@ -9,6 +9,7 @@ def calcolo_bmr(sesso, peso, altezza, età):
     else:
         raise ValueError("Sesso non valido.")
     return round(bmr)
+
 #calcolo livello di attività personale
 def calcola_tdee(bmr, livello_attività):
     livelli_attività = [1.2, 1.375, 1.55, 1.725, 1.9]
@@ -19,6 +20,41 @@ def calcola_tdee(bmr, livello_attività):
         raise ValueError("Livello di attività non valido")
 
     return round(bmr * fattore_attività)
+
+#calcolo indice massa corporea 
+def calcola_bmi(peso,altezza): 
+    if altezza <= 0:
+        raise ValueError("L'altezza deve essere maggiore di zero.")
+    else:
+        bmi = round(peso/((altezza * 0.01) **2),2)
+    return bmi
+
+#calcolo esito massa corporea 
+def valori_bmi(bmi):
+    if bmi < 16.0:
+        return "Sottopeso grave" 
+    elif 16.0 < bmi < 18.49:
+        return "Sottopeso"
+    elif 18.5 < bmi < 24.9:
+        return "Normopeso"
+    elif 25 < bmi < 29.9:
+        return "Sovrappeso" 
+    elif 30.0 < bmi < 34.9:
+        return "Obesità di classe 1"
+    
+#funzione per sport consigliato
+def esercizio_fisico(bmi):
+    if bmi < 16.0:
+        return "Si consigliano esercizi di rilassamento come yoga o ginnastica posturale e solo in un secondo momento introdurre anche esercizi di rinforzo in modo graduale." 
+    elif 16.0 < bmi < 18.49:
+        return "Si consigliano esercizi di forza per aumentare lam massa muscolare."
+    elif 18.5 < bmi < 24.9:
+        return "Si consigliano esercizi aerobici (camminata, nuoto, corsa) combinati equamente con esercizi con i pesi, due o tre volte a settimana.."
+    elif 25 < bmi < 29.9:
+        return "Si consigliano esercizi con i pesi combinati con una maggiore frequenza di esercizi aerobici (camminata, nuoto, corsa)." 
+    elif 30.0 < bmi < 34.9:
+        return "Si consigliano esercizi aerobici con una frequenza di cinque volte a settimana ma con intensità ridotta." 
+    
 #calcolo ripartizione calorica
 def ripartizione_calorica(tdee):
     colazione = round(tdee * 0.25)
@@ -26,10 +62,11 @@ def ripartizione_calorica(tdee):
     cena = round(tdee * 0.30)
     spuntino = round(tdee * 0.10)
     return colazione, pranzo, cena, spuntino
+
 #creazione grafico ripartizione pasti
-def crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, filepath):
-    dati = [colazione, pranzo, cena, spuntino]
-    etichette = ["Colazione", "Pranzo", "Cena", "Spuntino"]
+def crea_grafico_ripartizione(colazione, pranzo, spuntino, cena, filepath):
+    dati = [colazione, pranzo, spuntino, cena]
+    etichette = ["Colazione", "Pranzo", "Spuntino", "C"]
     colori = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     plt.pie(dati, labels=etichette, colors=colori, autopct='%1.1f%%')
     plt.title("Grafico della ripartizione calorica")

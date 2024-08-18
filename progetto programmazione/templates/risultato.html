@@ -37,13 +37,24 @@
                 graficoElement.style.display = graficoElement.style.display === "none" ? "block" : "none";
             }
         }
+        function toggleEsercizio(id) {
+            var esercizioElement = document.getElementById(id);
+            if (esercizioElement) {
+                esercizioElement.style.display = esercizioElement.style.display === "none" ? "block" : "none";
+            }
+        }
     </script>
 </head>
 <body>
     <h1>Risultato Calcolo Calorico</h1>
     <p><strong>BMR:</strong> {{ bmr }} kcal</p>
     <p><strong>TDEE:</strong> {{ tdee }} kcal</p>
-    
+    <p><strong>BMI:</strong> {{ bmi }} </p>
+    <p><strong>ESITO:</strong> {{ esito }} </p> 
+    <button onclick="toggleEsercizio('esercizio-fisico')">Consigli attività fisica</button>
+    <div id="esercizio-fisico" class="esercizio-fisico">
+        <p>{{ sport }}</p>
+    </div>
     <h2>Ripartizione Calorica Giornaliera</h2>
     <ul>
         <li><strong>Colazione:</strong> {{ colazione }} kcal</li>

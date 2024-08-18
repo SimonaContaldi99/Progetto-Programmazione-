@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body style="background-color: rgb(235, 245, 235)">
     <title>Risultato Calcolo Calorico</title>
     <!-- Aggiungi il widget di Google Translate -->
     <meta name="google-translate-customization" content="">
@@ -64,7 +65,7 @@
     </ul>
     
     <h2>Ripartizione calorica giornaliera</h2>
-    <div style="text-align: left;">
+    <div style="text-align: center;">
         <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}"
              style="width: 35%; height: auto; display: inline-block; margin-right: 10px;" alt="Grafico Ripartizione">
         <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" 
@@ -73,15 +74,15 @@
 
     <h2>Menu Settimanale</h2>
     {% for giorno, pasti in menu_settimanale.items() %}
-        <h3>{{ giorno }}</h3>
+    <div style="text-align: center; text-transform: uppercase;font-size: 20px;"><h3>{{ giorno }}</h3></div>
         <button onclick="toggleBilancio('grafico-bilancio-{{ giorno }}')">BILANCIO</button>
         <div id="grafico-bilancio-{{ giorno }}" class="grafico-bilancio">
             <img src="{{ url_for('static', filename='grafico_' + giorno + '.png') }}" alt="Grafico Bilancio {{ giorno }}"
-                 style="width: 20%; height: auto; display: inline-block; margin-right: 10px;">
+                 style="width: 20%; height: auto; display: inline-block; margin-right: 20px;">
         </div>
 
         <!-- Colazione -->
-        <h4>Colazione</h4>
+        <h4><i>Colazione</h4></i>
         <ul>
             {% for ricetta in pasti['Colazione'] %}
                 <li>
@@ -95,7 +96,7 @@
         </ul>
 
         <!-- Pranzo -->
-        <h4>Pranzo</h4>
+        <h4><i>Pranzo</h4></i>
         <ul>
             {% for ricetta in pasti['Pranzo'] %}
                 <li>
@@ -109,7 +110,7 @@
         </ul>
 
         <!-- Spuntino -->
-        <h4>Spuntino</h4>
+        <h4><i>Spuntino</h4></i>
         <ul>
             {% for ricetta in pasti['Spuntino'] %}
                 <li>
@@ -123,7 +124,7 @@
         </ul>
 
         <!-- Cena -->
-        <h4>Cena</h4>
+        <h4><i>Cena</h4></i>
         <ul>
             {% for ricetta in pasti['Cena'] %}
                 <li>
@@ -139,4 +140,6 @@
 
     <a href="/">Torna indietro</a>
 </body>
+</body>
 </html>
+

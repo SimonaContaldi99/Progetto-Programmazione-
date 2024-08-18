@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Flask, render_template, request
-from calcolo_calorico import calcolo_bmr, calcola_tdee, ripartizione_calorica, crea_grafico_ripartizione, crea_grafico_ripartizione_barre
+from calcolo_calorico import calcolo_bmr, calcola_tdee, calcola_bmi, valori_bmi, esercizio_fisico, ripartizione_calorica, crea_grafico_ripartizione, crea_grafico_ripartizione_barre
 import matplotlib.pyplot as plt
 import os
 
@@ -31,7 +31,10 @@ def calcola():
 
         bmr = calcolo_bmr(sesso, peso, altezza, età)
         tdee = calcola_tdee(bmr, livello_attività)
+        bmi = calcola_bmi(peso,altezza)
+        esito = valori_bmi(bmi)
         colazione, pranzo, cena, spuntino = ripartizione_calorica(tdee)
+        sport = esercizio_fisico(bmi)
 
         # Creazione del grafico a torta e barre
         crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
@@ -50,6 +53,7 @@ def calcola():
             return ricette.sample(3).to_dict(orient='records')
 
         giorni_settimana = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']
+
         #definizione menù settimanale
         menu_settimanale = {giorno: {
             'Colazione': filtra_ricette('Colazione', colazione),
@@ -85,8 +89,8 @@ def calcola():
             plt.close(fig)  # Close the figure to free up resources
 
         return render_template('risultato.html', 
-                               bmr=bmr, tdee=tdee,
-                               colazione=colazione, pranzo=pranzo, cena=cena, spuntino=spuntino,
+                               bmr=bmr, tdee=tdee,bmi=bmi,
+                               colazione=colazione, pranzo=pranzo, cena=cena, spuntino=spuntino, esito=esito, sport=sport,
                                menu_settimanale=menu_settimanale)
 
     except (ValueError, FileNotFoundError) as e:

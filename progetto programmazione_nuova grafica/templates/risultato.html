@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultato Calcolo Calorico</title>
+    
+    <!-- Aggiungi il widget di Google Translate -->
+    <meta name="google-translate-customization" content="">
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'it'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- Aggiungi CSS per migliorare l'aspetto -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(235, 245, 235);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #34495e;
+            margin-top: 15px;
+        }
+
+        h3 {
+            color: #2980b9;
+            margin: 15px 0;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .esercizio-fisico, .procedimento, .grafico-bilancio {
+            display: none;
+            margin-top: 10px;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .img-container img {
+            width: 35%;
+            height: auto;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #google_translate_element {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }    
+    </style>
+</head>
+<body>
+    <div id="google_translate_element"></div>
+
+    <div class="content-wrapper">
+        <h1>Risultato Calcolo Calorico</h1>
+        <p><strong>BMR:</strong> {{ bmr }} kcal</p>
+        <p><strong>TDEE:</strong> {{ tdee }} kcal</p>
+        <p><strong>BMI:</strong> {{ bmi }} </p>
+        <p><strong>ESITO:</strong> {{ esito }} </p> 
+
+        <button onclick="toggleEsercizio('esercizio-fisico')">Consigli attività fisica</button>
+        <div id="esercizio-fisico" class="esercizio-fisico">
+            <p>{{ sport }}</p>
+        </div>
+
+        <h2>Ripartizione Calorica Giornaliera</h2>
+        <ul>
+            <li><strong>Colazione:</strong> {{ colazione }} kcal</li>
+            <li><strong>Pranzo:</strong> {{ pranzo }} kcal</li>
+            <li><strong>Spuntino:</strong> {{ spuntino }} kcal</li>
+            <li><strong>Cena:</strong> {{ cena }} kcal</li>
+        </ul>
+
+        <h2>Ripartizione calorica giornaliera</h2>
+        <div class="img-container">
+            <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}" alt="Grafico Ripartizione">
+            <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" alt="Grafico Ripartizione Barre">
+        </div>
+
+        <h2>Menu Settimanale</h2>
+        {% for giorno, pasti in menu_settimanale.items() %}
+        <div>
+            <h3>{{ giorno }}</h3>
+            <button onclick="toggleBilancio('grafico-bilancio-{{ giorno }}')">BILANCIO</button>
+            <div id="grafico-bilancio-{{ giorno }}" class="grafico-bilancio">
+                <img src="{{ url_for('static', filename='grafico_' + giorno + '.png') }}" alt="Grafico Bilancio {{ giorno }}">
+            </div>
+
+            <!-- Colazione -->
+            <h4>Colazione</h4>
+            <ul>
+                {% for ricetta in pasti['Colazione'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-colazione-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-colazione-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Pranzo -->
+            <h4>Pranzo</h4>
+            <ul>
+                {% for ricetta in pasti['Pranzo'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-pranzo-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-pranzo-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Spuntino -->
+            <h4>Spuntino</h4>
+            <ul>
+                {% for ricetta in pasti['Spuntino'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-spuntino-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-spuntino-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Cena -->
+            <h4>Cena</h4>
+            <ul>
+                {% for ricetta in pasti['Cena'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-cena-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-cena-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+
+        <a href="/">Torna indietro</a>
+    </div>
+
+    <script>
+            function toggleProcedimento(id) {
+        var procedimentoElement = document.getElementById(id);
+        if (procedimentoElement) {
+            var isVisible = window.getComputedStyle(procedimentoElement).display !== "none";
+            procedimentoElement.style.display = isVisible ? "none" : "block";
+        }
+    }
+
+    function toggleBilancio(id) {
+        var graficoElement = document.getElementById(id);
+        if (graficoElement) {
+            var isVisible = window.getComputedStyle(graficoElement).display !== "none";
+            graficoElement.style.display = isVisible ? "none" : "block";
+        }
+    }
+
+    function toggleEsercizio(id) {
+        var esercizioElement = document.getElementById(id);
+        if (esercizioElement) {
+            var isVisible = window.getComputedStyle(esercizioElement).display !== "none";
+            esercizioElement.style.display = isVisible ? "none" : "block";
+        }
+    }
+
+    </script>
+</body>
+</html>

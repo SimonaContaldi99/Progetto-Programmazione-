@@ -1,105 +1,442 @@
-import pandas as pd
-from flask import Flask, render_template, request
-from calcolo_calorico import calcolo_bmr, calcola_tdee, calcola_bmi, valori_bmi, esercizio_fisico, ripartizione_calorica, crea_grafico_ripartizione, crea_grafico_ripartizione_barre
-import matplotlib.pyplot as plt
-import os
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultato Calcolo Calorico</title>
+    
+    <!-- Widget di Google Translate -->
+    <meta name="google-translate-customization" content="">
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'it'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(235, 245, 235);
+            color: #316837;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-app = Flask(__name__)
+        h1, h2 {
+            color: #316837;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: relative; 
+            padding-bottom: 10px; 
+        }
 
-# Creazione directory
-if not os.path.exists('static'):
-    os.makedirs('static')
+        h1::after, h2::after {
+            content: "";
+            display: block;
+            width: 50%; 
+            height: 2px; 
+            background-color: #316837; 
+            margin: 0 auto; 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+        h3, h4 {
+            text-align: left; 
+            margin: 10px 0;
+        }
 
-@app.route('/calcola', methods=['POST'])
-def calcola():
-    sesso = request.form['sesso']
-    età = request.form.get('età')
-    altezza = request.form.get('altezza')
-    peso = request.form.get('peso')
-    livello_attività = request.form.get('livello_attività')
+        h3 {
+            font-style: arial; 
+            text-transform: uppercase;
+        }
 
-    try:
-        # Validazione inputs
-        età = int(età)
-        altezza = float(altezza)
-        peso = float(peso)
-        livello_attività = int(livello_attività)
+        p {
+            margin: 10px 0;
+        }
 
-        bmr = calcolo_bmr(sesso, peso, altezza, età)
-        tdee = calcola_tdee(bmr, livello_attività)
-        bmi = calcola_bmi(peso,altezza)
-        esito = valori_bmi(bmi)
-        colazione, pranzo, cena, spuntino = ripartizione_calorica(tdee)
-        sport = esercizio_fisico(bmi)
+        .menu-settimanale {
+            margin-top: 20px;
+        }
 
-        # Creazione del grafico a torta e barre
-        crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
-        crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
+        .giorno {
+             margin-bottom: 20px;
+        }
+
+        .giorno-btn {
+            background-color: #bbedc4;
+            color: rgb(46, 43, 43);
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .giorno-btn:hover {
+            background-color: #45a055;
+        }
+
+        .contenuto {
+            display: none;
+            background-color: #fafeff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgb(255, 254, 254);
+        }
+
+        .procedimento {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .esercizio-fisico, .procedimento{
+            display: none;
+            margin-top: 10px;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .grafico-bilancio{
+            display: none;
+            margin-top: 4px;
+            padding: 4px;
+            border-radius: 3px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .procedimento {
+            display: none; /* Nascondi di default */
+            background-color: transparent; /* Rimuove lo sfondo */
+            padding: 10px; /* Spazio interno */
+            border: none; /* Rimuove il bordo */
+            border-radius: 5px; /* Raggiunge gli angoli se hai un bordo */
+            color: #333; /* Colore del testo */
+            box-shadow: none; /* Rimuove eventuali ombre */
+        }
         
+        button {
+            background-color: #52b664;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-        # Lettura del file CSV
-        if not os.path.isfile('ricette_passaggi.csv'):
-            raise FileNotFoundError("Il file 'ricette_passaggi.csv' non è stato trovato.")
+        button:hover {
+            background-color: #52b664;
+        }
+
+        a {
+            color: #52b664;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            color: #52b664;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .img-container img {
+            width: 35%;
+            height: auto;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #google_translate_element {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }    
         
-        df = pd.read_csv('ricette_passaggi.csv')
+        .tooltip {
+            position: relative; 
+            display: inline-block; 
+            cursor: pointer; 
+            color: #727572;
+            font-size: small;
+        }
 
-        #definizione funzione per filtrare le ricette in base alle calorie
-        def filtra_ricette(tipo, calorie_max):
-            ricette = df[(df['Tipo'] == tipo) & (df['Calorie'] <= calorie_max)]
-            if ricette.empty:
-                return []
-            return ricette.sample(3).to_dict(orient='records')
-        
-        giorni_settimana = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']
+        .tooltip .tooltiptext {
+            visibility: hidden; 
+            width: 200px; 
+            background-color: #6d6c6c; 
+            color: #fff; 
+            text-align: left; 
+            border-radius: 6px; 
+            padding: 5px; 
+            position: absolute; 
+            z-index: 1; 
+            bottom: 100%; 
+            left: 105%;
+            margin-left: 10px; 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+        }
 
-        #definizione menù settimanale
-        menu_settimanale = {giorno: {
-            'Colazione': filtra_ricette('Colazione', colazione),
-            'Pranzo': filtra_ricette('Pranzo', pranzo),
-            'Cena': filtra_ricette('Cena', cena),
-            'Spuntino': filtra_ricette('Spuntino', spuntino)
-        } for giorno in giorni_settimana}
+        .tooltip:hover .tooltiptext {
+            visibility: visible; 
+            opacity: 1; 
+        }
+        </style>
+</head>
+<body>
+    <div id="google_translate_element"></div>
+    <div class="content-wrapper">
+        <h1>Risultato Calcolo Calorico</h1>
+        <p><strong>BMR:</strong> {{ bmr }} kcal
+            <span class="tooltip">[Info]
+                <span class="tooltiptext">Il BMR, o Basal Metabolic Rate, rappresenta la quantità di calorie che il tuo corpo brucia a riposo per mantenere le funzioni vitali.</span>
+            </span>
+        </p>
+        <p><strong>TDEE:</strong> {{ tdee }} kcal
+            <span class="tooltip">[Info]
+                <span class="tooltiptext">Il TDEE, o Total Daily Energy Expenditure, rappresenta la quantità totale di calorie che una persona brucia in un giorno per mantenere il proprio peso.</span>
+            </span>
+        </p>
+        <p><strong>BMI:</strong> {{ bmi }} 
+            <span class="tooltip">[Info]
+                <span class="tooltiptext">Il BMI, o Indice di Massa Corporea, è un indicatore utilizzato per valutare se una persona ha un peso appropriato rispetto alla sua altezza.</span>
+            </span>
+        </p>
+        <p><strong>ESITO:</strong> {{ esito }}
+            <span class="tooltip">[Info]
+                <span class="tooltiptext"><p>&#x25C7; Sottopeso grave: BMI <16.5
+                    <br>
+                    &#x25C7; Sottopeso: BMI 16 - 18.49
+                    <br>
+                    &#x25C7; Normopeso: BMI 18.5 - 29.9
+                    <br>
+                    &#x25C7; Sovrappeso: BMI25 - 29.9
+                    <br>
+                    &#x25C7; Obesità I: BMI 30 - 34.9
+                    <br>
+                    &#x25C7; Obesità II o III: BMI > 35
+                  </p>
+            </span>
+         </p> 
 
-        media_kcal = {}
-        for giorno, pasti in menu_settimanale.items():
-            media_kcal[giorno] = {}
-            for pasto, ricette in pasti.items():
-                if ricette:
-                    media_kcal[giorno][pasto] = sum([ricetta['Calorie'] for ricetta in ricette]) / len(ricette)
-                else:
-                    media_kcal[giorno][pasto] = None
+        <button onclick="toggleEsercizio('esercizio-fisico')">Consigli attività fisica</button>
+        <div id="esercizio-fisico" class="esercizio-fisico">
+            <p>{{ sport }}</p>
+        </div>
 
-        ordine_pasti = ["Colazione", "Pranzo", "Spuntino", "Cena"]
+        <h2>Ripartizione Calorica Giornaliera</h2>
+        <ul>
+            <li><strong>Colazione:</strong> {{ colazione }} kcal</li>
+            <li><strong>Pranzo:</strong> {{ pranzo }} kcal</li>
+            <li><strong>Spuntino:</strong> {{ spuntino }} kcal</li>
+            <li><strong>Cena:</strong> {{ cena }} kcal</li>
+        </ul>
+        <h2>Ripartizione calorica giornaliera</h2>
+        <div class="img-container">
+            <img src="{{ url_for('static', filename='grafico_ripartizione.png') }}" alt="Grafico Ripartizione">
+            <img src="{{ url_for('static', filename='grafico_ripartizione_barre.png') }}" alt="Grafico Ripartizione Barre">
+        </div>
 
-        #stabilire i pasti giornalieri in base alle kcal
-        giorni = list(media_kcal.keys())
-        for giorno in giorni:
-            pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
-            medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
+        <h2>&#128197; Menu Settimanale</h2>
+        <div class="menu-settimanale"></div>
+        {% for giorno, pasti in menu_settimanale.items() %}
+        <div class="giorno">
+            <button class="giorno-btn" onclick="toggleContenuto('contenuto-{{ giorno }}')"> &#128204; {{ giorno }}</button>
+            <div id="contenuto-{{ giorno }}" class="contenuto">
+           <br> 
+           <button onclick="toggleBilancio('grafico-bilancio-{{ giorno }}')">BILANCIO</button>
+            <div id="grafico-bilancio-{{ giorno }}" class="grafico-bilancio">
+                <img src="{{ url_for('static', filename='grafico_' + giorno + '.png') }}" alt="Grafico Bilancio {{ giorno }}">
+            </div>
 
-            #creazione grafico
-            fig, ax = plt.subplots()
-            ax.plot(pasti_giornalieri, medie_pasti, label="Andamento kcal con ricette")
-            ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Andamento kcal calcolato")
-            ax.legend()
-            ax.set_title(f"Bilancio calorie giornaliere - {giorno}")
-            ax.set_xlabel("Pasti della giornata")
-            ax.set_ylabel("Distribuzione calorie")
-            plt.savefig(f"static/grafico_{giorno}.png")
-            plt.close(fig)  
+            <!-- Colazione -->
+            <h4>Colazione (scegliere una delle opzioni proposte)</h4>
+            <ul>
+                {% for ricetta in pasti['Colazione'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-colazione-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-colazione-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
 
-        return render_template('risultato.html', 
-                               bmr=bmr, tdee=tdee,bmi=bmi,
-                               colazione=colazione, pranzo=pranzo, cena=cena, spuntino=spuntino, esito=esito, sport=sport,
-                               menu_settimanale=menu_settimanale)
+            <!-- Pranzo -->
+            <h4>Pranzo (scegliere una delle opzioni proposte)</h4>
+            <ul>
+                {% for ricetta in pasti['Pranzo'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-pranzo-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-pranzo-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
 
-    except (ValueError, FileNotFoundError) as e:
-        error_message = str(e)
-        return render_template('index.html', error=error_message)
+            <!-- Spuntino -->
+            <h4>Spuntino (scegliere una delle opzioni proposte)</h4>
+            <ul>
+                {% for ricetta in pasti['Spuntino'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-spuntino-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-spuntino-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
 
-if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+            <!-- Cena -->
+            <h4>Cena (scegliere una delle opzioni proposte)</h4>
+            <ul>
+                {% for ricetta in pasti['Cena'] %}
+                    <li>
+                        <strong>{{ ricetta['Ricetta'] }}</strong> - {{ ricetta['Calorie'] }} kcal
+                        <button onclick="toggleProcedimento('procedimento-cena-{{ giorno }}-{{ loop.index }}')">Mostra Procedimento</button>
+                        <div id="procedimento-cena-{{ giorno }}-{{ loop.index }}" class="procedimento">
+                            <p>{{ ricetta['Descrizione'] }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+
+        <a href="/">Torna indietro</a>
+    </div>
+
+    <!-- Script esecuzione comandi a comparsa -->
+    <script>
+
+    function toggleProcedimento(id) {
+        var procedimentoElement = document.getElementById(id);
+        if (procedimentoElement) {
+            var isVisible = window.getComputedStyle(procedimentoElement).display !== "none";
+            procedimentoElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleBilancio(id) {
+        var graficoElement = document.getElementById(id);
+        if (graficoElement) {
+            var isVisible = window.getComputedStyle(graficoElement).display !== "none";
+            graficoElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleEsercizio(id) {
+        var esercizioElement = document.getElementById(id);
+        if (esercizioElement) {
+            var isVisible = window.getComputedStyle(esercizioElement).display !== "none";
+            esercizioElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleBmr() {
+        var bmrElement = document.getElementById("bmr-descrizione");
+        if (bmrElement) {
+            var isVisible = window.getComputedStyle(bmrElement).display !== "none";
+            bmrElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleTdee() {
+        var tdeeElement = document.getElementById("tdee-descrizione");
+        if (tdeeElement) {
+            var isVisible = window.getComputedStyle(tdeeElement).display !== "none";
+            tdeeElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleBmi() {
+        var bmiElement = document.getElementById("bmi-descrizione");
+        if (bmiElement) {
+            var isVisible = window.getComputedStyle(bmiElement).display !== "none";
+            bmiElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleSpiegazione() {
+        var spiegazioneElement = document.getElementById("spiegazione-descrizione");
+        if (spiegazioneElement) {
+            var isVisible = window.getComputedStyle(spiegazioneElement).display !== "none";
+            spiegazioneElement.style.display = isVisible ? "none" : "block";
+    }
+}
+
+    function toggleContenuto(id) {
+        var contenutoElement = document.getElementById(id);
+        if (contenutoElement) {
+            var isVisible = window.getComputedStyle(contenutoElement).display !== "none";
+            contenutoElement.style.display = isVisible ? "none" : "block";
+    }
+}
+    </script>
+</body>
+</html>

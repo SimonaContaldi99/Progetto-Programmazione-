@@ -1,3 +1,4 @@
+import numpy as np
 import matplotlib.pyplot as plt
 
 #calcolo valori corporei
@@ -41,6 +42,8 @@ def valori_bmi(bmi):
         return "Sovrappeso" 
     elif 30.0 < bmi < 34.9:
         return "Obesità di classe 1"
+    else:
+        return "Obesità di classe <=2"
     
 #funzione per sport consigliato
 def esercizio_fisico(bmi):
@@ -49,11 +52,13 @@ def esercizio_fisico(bmi):
     elif 16.0 < bmi < 18.49:
         return "Si consigliano esercizi di forza per aumentare lam massa muscolare."
     elif 18.5 < bmi < 24.9:
-        return "Si consigliano esercizi aerobici (camminata, nuoto, corsa) combinati equamente con esercizi con i pesi, due o tre volte a settimana.."
+        return "Si consigliano esercizi aerobici (camminata, nuoto, corsa) combinati equamente con esercizi con i pesi, due o tre volte a settimana."
     elif 25 < bmi < 29.9:
         return "Si consigliano esercizi con i pesi combinati con una maggiore frequenza di esercizi aerobici (camminata, nuoto, corsa)." 
     elif 30.0 < bmi < 34.9:
         return "Si consigliano esercizi aerobici con una frequenza di cinque volte a settimana ma con intensità ridotta." 
+    else:
+        return "Per obesità di questo tipo si valuta di solito con il proprio medico di riferimento un trattamento specifico con possibile operazione nei casi più gravi, e solo dopo si valuta per una dieta e una programmazione di attività fisica personalizzate."
     
 #calcolo ripartizione calorica
 def ripartizione_calorica(tdee):
@@ -66,7 +71,7 @@ def ripartizione_calorica(tdee):
 #creazione grafico ripartizione pasti
 def crea_grafico_ripartizione(colazione, pranzo, spuntino, cena, filepath):
     dati = [colazione, pranzo, spuntino, cena]
-    etichette = ["Colazione", "Pranzo", "Spuntino", "C"]
+    etichette = ["Colazione", "Pranzo", "Cena", "Spuntino"]
     colori = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
     plt.pie(dati, labels=etichette, colors=colori, autopct='%1.1f%%')
     plt.title("Grafico della ripartizione calorica")

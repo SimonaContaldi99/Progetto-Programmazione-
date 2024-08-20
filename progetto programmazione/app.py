@@ -39,19 +39,21 @@ def calcola():
         # Creazione del grafico a torta e barre
         crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
         crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
+        
 
         # Lettura del file CSV
         if not os.path.isfile('ricette_passaggi.csv'):
             raise FileNotFoundError("Il file 'ricette_passaggi.csv' non è stato trovato.")
         
         df = pd.read_csv('ricette_passaggi.csv')
+
         #definizione funzione per filtrare le ricette in base alle calorie
         def filtra_ricette(tipo, calorie_max):
             ricette = df[(df['Tipo'] == tipo) & (df['Calorie'] <= calorie_max)]
             if ricette.empty:
                 return []
             return ricette.sample(3).to_dict(orient='records')
-
+        
         giorni_settimana = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']
 
         #definizione menù settimanale
@@ -72,21 +74,23 @@ def calcola():
                     media_kcal[giorno][pasto] = None
 
         ordine_pasti = ["Colazione", "Pranzo", "Spuntino", "Cena"]
+
         #stabilire i pasti giornalieri in base alle kcal
         giorni = list(media_kcal.keys())
         for giorno in giorni:
             pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
             medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
+
             #creazione grafico
             fig, ax = plt.subplots()
-            ax.plot(pasti_giornalieri, medie_pasti, label="Calorie reali")
-            ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Calorie attese")
+            ax.plot(pasti_giornalieri, medie_pasti, label="Andamento kcal con ricette")
+            ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Andamento kcal calcolato")
             ax.legend()
             ax.set_title(f"Bilancio calorie giornaliere - {giorno}")
-            ax.set_xlabel("Pasti del giorno")
-            ax.set_ylabel("Calorie calcolate")
+            ax.set_xlabel("Pasti della giornata")
+            ax.set_ylabel("Distribuzione calorie")
             plt.savefig(f"static/grafico_{giorno}.png")
-            plt.close(fig)  # Close the figure to free up resources
+            plt.close(fig)  
 
         return render_template('risultato.html', 
                                bmr=bmr, tdee=tdee,bmi=bmi,

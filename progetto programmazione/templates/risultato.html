@@ -62,50 +62,50 @@
         }
 
         .menu-settimanale {
-    margin-top: 20px;
-    }
+            margin-top: 20px;
+        }
 
-    .giorno {
-        margin-bottom: 20px;
-    }
+        .giorno {
+             margin-bottom: 20px;
+        }
 
-    .giorno-btn {
-        background-color: #bbedc4;
-        color: rgb(46, 43, 43);
-        border: none;
-        padding: 10px 15px;
-        text-align: center;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        width: 100%;
-        text-align: center;
-    }
+        .giorno-btn {
+            background-color: #bbedc4;
+            color: rgb(46, 43, 43);
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
 
-    .giorno-btn:hover {
-        background-color: #45a055;
-    }
+        .giorno-btn:hover {
+            background-color: #45a055;
+        }
 
-    .contenuto {
-        display: none;
-        background-color: #fafeff;
-        padding: 15px;
-        border-radius: 5px;
-        box-shadow: 0 2px 10px rgb(255, 254, 254);
-    }
+        .contenuto {
+            display: none;
+            background-color: #fafeff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgb(255, 254, 254);
+        }
 
-    .procedimento {
-        display: none;
-        background-color: #f9f9f9;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        margin-top: 10px;
-    }
+        .procedimento {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
 
         .content-wrapper {
             max-width: 900px;
@@ -213,35 +213,35 @@
             z-index: 1000;
         }    
         
-    .tooltip {
-        position: relative; /* Posizionamento relativo del testo */
-        display: inline-block; /* Display inline-block per il testo */
-        cursor: pointer; /* Mostra il cursore come una mano */
-        color: #727572; /* Colore del testo */
-        font-size: small;
-}
+        .tooltip {
+            position: relative; 
+            display: inline-block; 
+            cursor: pointer; 
+            color: #727572;
+            font-size: small;
+        }
 
-    .tooltip .tooltiptext {
-        visibility: hidden; /* Nascondi il tooltip per default */
-        width: 200px; /* Larghezza del tooltip */
-        background-color: #6d6c6c; /* Colore di sfondo del tooltip */
-        color: #fff; /* Colore del testo del tooltip */
-        text-align: left; /* Allineamento del testo */
-        border-radius: 6px; /* Bordo arrotondato */
-        padding: 5px; /* Spaziatura interna */
-        position: absolute; /* Posizionamento assoluto */
-        z-index: 1; /* Assicurati che il tooltip sia sopra gli altri elementi */
-        bottom: 100%; /* Posiziona il tooltip sopra l'elemento di attivazione */
-        left: 105%; /* Posiziona il tooltip a destra dell'elemento di attivazione */
-        margin-left: 10px; /* Spaziatura tra il testo e il tooltip */
-        opacity: 0; /* Nascondi il tooltip inizialmente */
-        transition: opacity 0.3s; /* Transizione per la visibilità */
-    }
+        .tooltip .tooltiptext {
+            visibility: hidden; 
+            width: 200px; 
+            background-color: #6d6c6c; 
+            color: #fff; 
+            text-align: left; 
+            border-radius: 6px; 
+            padding: 5px; 
+            position: absolute; 
+            z-index: 1; 
+            bottom: 100%; 
+            left: 105%;
+            margin-left: 10px; 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+        }
 
-    .tooltip:hover .tooltiptext {
-        visibility: visible; /* Mostra il tooltip quando il mouse è sopra l'elemento */
-        opacity: 1; /* Rendi il tooltip visibile */
-    }
+        .tooltip:hover .tooltiptext {
+            visibility: visible; 
+            opacity: 1; 
+        }
         </style>
 </head>
 <body>
@@ -264,19 +264,20 @@
             </span>
         </p>
         <p><strong>ESITO:</strong> {{ esito }}
-            <span class="info-link" onclick="toggleSpiegazione()">[Info]</span>
-                <div id="spiegazione-descrizione" class="procedimento">
-                  <p>&#128100; Sottopeso grave: <16.5
+            <span class="tooltip">[Info]
+                <span class="tooltiptext">&#x25C7; Sottopeso grave: BMI <16.5
                     <br>
-                    &#128100; Sottopeso: 16 18.49
-                     <br>
-                     &#128100; Normopeso: 18.5 - 29.9
-                     <br>
-                     &#128100; Sovrappeso: 25 - 29.9
-                     <br>
-                     &#128100; Obesità I: 30 - 34.9
-                  </p>
-                </div>
+                    &#x25C7; Sottopeso: BMI 16 - 18.49
+                    <br>
+                    &#x25C7; Normopeso: BMI 18.5 - 29.9
+                    <br>
+                    &#x25C7; Sovrappeso: BMI25 - 29.9
+                    <br>
+                    &#x25C7; Obesità I: BMI 30 - 34.9
+                    <br>
+                    &#x25C7; Obesità II o III: BMI > 35
+                  
+            </span>
          </p> 
 
         <button onclick="toggleEsercizio('esercizio-fisico')">Consigli attività fisica</button>

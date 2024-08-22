@@ -160,8 +160,7 @@ Pranzo,Pasta con crema di zucchine e basilico,400,Cuoci le zucchine a pezzetti i
 Pranzo,Stufato di pollo con patate e carote,550,Rosola i pezzi di pollo in una pentola con olio. Poi aggiungi cipolla e carote e patate a cubetti. Copri con brodo di pollo. Cuoci a fuoco lento fino a quando il pollo è tenero e le verdure sono cotte aggiustando di sale e pepe.
 Pranzo,Insalata di riso con pollo e mango,450,Cuoci il riso e lascialo raffreddare. Griglia il pollo e taglialo a cubetti. Unisci il riso con il pollo e il mango a pezzi e condisci con olio d'oliva e succo di lime.
 Pranzo,Polpette di lenticchie con salsa di pomodoro,400,Cuoci le lenticchie fino a renderle tenere e poi scolale. Frulla le lenticchie con pane grattugiato e spezie quindi forma delle polpette. Cuoci le polpette in padella e servile con salsa di pomodoro calda.
-Cena,Filetto di Manzo con Salsa al Vino Rosso,500,
-Rosola il filetto di manzo in padella fino a raggiungere la cottura desiderata. Rimuovi il filetto e nella stessa padella riduci il vino rosso con burro e brodo per creare la salsa. Versa la salsa sul filetto e servi immediatamente.
+Cena,Filetto di Manzo con Salsa al Vino Rosso,500,Rosola il filetto di manzo in padella fino a raggiungere la cottura desiderata. Rimuovi il filetto e nella stessa padella riduci il vino rosso con burro e brodo per creare la salsa. Versa la salsa sul filetto e servi immediatamente.
 Cena,Insalata di Pollo e Mandorle,400,Cuoci il petto di pollo e lascialo raffreddare. Taglia il pollo a strisce o cubetti. Tosta le mandorle in una padella fino a doratura. Mescola il pollo con le mandorle e aggiungi insalata verde e condisci con olio d'oliva e aceto.
 Cena,Lasagna di Pesce con Spinaci,600,Alterna strati di lasagne precotte con pesce lessato e cucinato e spinaci (far saltare tutto in padella insieme) e besciamella fatta in casa. Copri l'ultimo strato con una generosa quantità di besciamella e parmigiano grattugiato. Cuoci in forno a 180°C per circa 30-40 minuti fino a quando la superficie è dorata e croccante.
 Cena,Stufato di Manzo con Patate e Carote,550,Rosola i pezzi di manzo in una pentola fino a doratura. Aggiungi cipolla e aglio tritati e cuoci per qualche minuto. Unisci patate e carote tagliate a pezzi e copri con brodo. Cuoci a fuoco lento fino a quando la carne e le verdure sono tenere.
@@ -229,92 +228,92 @@ Cena,Stufato di Agnello con Patate e Carote,600,Rosola i pezzi di agnello in una
 Cena,Pollo al Forno con Salsa di Miele e Senape,500,Prepara la salsa mescolando miele e senape in una ciotola. Spennella il pollo con la salsa e condiscilo con sale e pepe. Cuoci il pollo in forno preriscaldato a 200°C per circa 40 minuti spennellando di tanto in tanto con la salsa. Verifica che il pollo sia ben cotto e servi caldo.
 Cena,Quiche di Zucchine e Prosciutto,400,Prepara la base di pasta brisée e stendila in una teglia. In una ciotola mescola le zucchine grattugiate e il prosciutto a pezzetti e un po' di formaggio grattugiato. Versa il composto sulla base di pasta e cuoci in forno preriscaldato a 180°C per circa 35 minuti. Lascia raffreddare leggermente prima di servire.
 Cena,Spaghetti con Salsa di Pomodori Secchi e Capperi,400,Cuoci gli spaghetti in acqua salata fino a quando sono al dente. In una padella scalda un po' di olio d'oliva e aggiungi i pomodori secchi tritati e i capperi. Cuoci per alcuni minuti e aggiungi un po' di acqua di cottura della pasta. Mescola la salsa con gli spaghetti e servi caldo.
-Cena,Polpettine di Manzo con Salsa di Vino Rosso,500,Preparare polpettine di manzo e servirle con salsa di vino rosso e purè di patate.
-Cena,Risotto con Radicchio e Gorgonzola,500,Preparare risotto con radicchio e gorgonzola
-Cena,Insalata di Pollo e Avocado con Salsa di Lime,450,Preparare insalata con pollo grigliato
-Cena,Stufato di Manzo con Patate e Piselli,550,Cuocere manzo con patate e piselli in uno stufato saporito.
-Cena,Quiche di Funghi e Gruyère,400,Preparare una quiche con funghi e formaggio Gruyère
-Cena,Pollo alla Griglia con Salsa di Pomodoro e Basilico,450,Grigliare pollo e servirlo con salsa di pomodoro e basilico fresco.
-Cena,Spaghetti con Salsa di Peperoni e Basilico,400,Cuocere spaghetti e condirli con salsa di peperoni e basilico fresco.
+Cena,Polpettine di Manzo con Salsa di Vino Rosso,500,Preparare polpettine unendo in una ciotola carne macinata con pane grattugiato e uovo e spezie. Forma le polpettine. In una padella versa un filo d'olio e una volta caldo aggiungi le polpette e fai rosolare per qualche minuto. A parte prepara un bicchiere di vino rosso e aggiungi un cucchiaino di amido di mais e mescola. Quando le polpette saranno rosolate versa il bicchiere di vino e cuoci fin quando non sarà addensato e le polpette cotte. 
+Cena,Risotto con Radicchio e Gorgonzola,500,Soffriggi cipolla e aglio in burro fino a doratura. Aggiungi il radicchio e cuoci finché tenero. Unisci il riso e tosta per qualche minuto. Aggiungi brodo caldo gradualmente mescolando e alla fine incorpora il gorgonzola fino a ottenere una consistenza cremosa.
+Cena,Insalata di Pollo e Avocado con Salsa di Lime,450,Lava l'insalata e tagliala e poi mettila in una ciotola. Fai la stessa cosa con l'avocado e uniscilo all'insalata. A parte griglia il pollo. Una volta cotto taglialo come preferisci e aggiungilo all'insalta e all'avocado. Condisci con sale e succo di lime.
+Cena,Stufato di Manzo con Patate e Piselli,550,Infarina la carne e rosola in una pentola con un filo d'olio. Nello stesso tegame aggiungi un trito di cipolla e carota. Una volta rosolato sfuma con vino rosso. A parte lava e taglia le patate a cubetti. Una volta evaporato l'alcol aggiungi le patate e i piselli nel tegame. Allunga con acqua o brodo vegetale e lascia cuocere finchè le patate non sono perfettamente cotte.
+Cena,Quiche di Funghi e Gruyère,400,In una padella fai soffriggere dell'aglio con un filo d'olio e poi versa i funghi. Copri e fai cuocere per una decina di minuti. Grattugia il groviera. Usa un rotolo di pasta brisèè già pronto. Stendilo su una tortiera. In una ciotola versa i funghi con il groviera grattuggiato e aggiungi due uova. Aggiusta di sale e pepe e mescola. Versa il composto sulla pasta di brisèè e inforna per 20 minuti a 180 gradi.
+Cena,Pollo alla Griglia con Salsa di Pomodoro e Basilico,450,Soffri aglio e cipolla con un filo d'olio. Versa la passata di pomodoro e fai cuocere per una decina di minuti. Aggiusta di sale. A parte su una griglia griglia il pollo. Una volta cotto il pollo impiatta e versa su un mestolo di salsa.
+Cena,Spaghetti con Salsa di Peperoni e Basilico,400,Lava e taglia i peperoni. Fai cuocere in padella con un filo d'olio per circa 15 minuti. Una volta cotti falli raffreddare e poi frullali. Aggiusta di sale e pepe. Riempi una casseruola con dell'acqua e porta a bollore. Aggiungi il sale e cala la pasta. Fai cuocere secondo i tempi indicati sulla confezione. Scola la pasta e manteca con la salsa ai peperoni.
 Cena,Lasagna con Ragu di Manzo e Mozzarella,600,Alterna strati di lasagne precotte con ragù di manzo (preparato con manzo macinato e pomodoro e spezie) e besciamella fatta in casa. Copri l'ultimo strato con una generosa quantità di besciamella e parmigiano grattugiato. Cuoci in forno a 180°C per circa 30-40 minuti fino a quando la superficie è dorata e croccante.
-Cena,Stufato di Pollo con Patate e Cipolle,500,Cuocere pollo con patate e cipolle in uno stufato saporito.
-Cena,Quiche di Zucchine e Feta,400,Preparare una quiche con zucchine e feta
-Cena,Polpettine di Tacchino con Salsa di Mirtilli,450,Preparare polpettine di tacchino e servirle con salsa di mirtilli e contorno di riso.
-Cena,Spaghetti con Salsa di Pomodori e Olive,400,Cuocere spaghetti e condirli con salsa di pomodori e olive.
+Cena,Stufato di Pollo con Patate e Cipolle,500,Infarina il pollo e rosola in una pentola con un filo d'olio. Nello stesso tegame aggiungi un trito di cipolla e carota. Una volta rosolato sfuma con vino rosso. A parte lava e taglia le patate a cubetti. Una volta evaporato l'alcol aggiungi le patate e le cipolle tagliate sottili nel tegame. Allunga con acqua o brodo vegetale e lascia cuocere finchè le patate non sono perfettamente cotte.
+Cena,Quiche di Zucchine e Feta,400,Prepara la base di pasta brisée e stendila in una teglia. In una ciotola mescola le zucchine grattugiate e la feta sciacquata a pezzetti e un po' di formaggio grattugiato. Versa il composto sulla base di pasta e cuoci in forno preriscaldato a 180°C per circa 35 minuti. Lascia raffreddare leggermente prima di servire.
+Cena,Polpettine di Tacchino con Salsa di Mirtilli,450,Preparare polpettine unendo in una ciotola carne macinata con pane grattugiato e uovo e spezie. Forma le polpettine. In una padella versa un filo d'olio e una volta caldo aggiungi le polpette e fai rosolare per qualche minuto. A parte frulla i mirtilli. Colali con un colino e aggiungi un cucchiaino di amido di mais e mescola. Quando le polpette saranno rosolate versa la salsa di mirtilli e cuoci fin quando non sarà addensata e le polpette cotte. 
+Cena,Spaghetti con Salsa di Pomodori e Olive,400, In una padella fai rosolare un filo d'olio con aglio e olive. Aggiungi i podomodori precedentemente lavati e tagliati. Aggiusta di sale e fai cuocere per una ventina di minuti. Aggiugni acqua se serve. A parte prepara una casseruola con dell'acqua e porta ad ebollizione. Cuoci gli spaghetti secondo i tempi indicati dalla confezione. Scola la pasta e manteca con la salsa preparata precedentemente.
 Cena,Lasagna con Funghi e Prosciutto,600,Alterna strati di lasagne precotte con funghi cotti in padella e prosciutto e besciamella fatta in casa. Copri l'ultimo strato con una generosa quantità di besciamella e parmigiano grattugiato. Cuoci in forno a 180°C per circa 30-40 minuti fino a quando la superficie è dorata e croccante.
 Spuntino,Bruschette con Pomodoro e Basilico,150,Pane tostato con pomodoro fresco e basilico.
 Spuntino,Panino con Prosciutto e Formaggio,200,Panino farcito con prosciutto e formaggio.
-Spuntino,Mini Quiche con Spinaci e Ricotta,100,Piccole quiche ripiene di spinaci e ricotta.
-Spuntino,Polpettine di Tacchino,150,Polpettine di tacchino servite con salsa leggera.
+Spuntino,Mini Quiche con Spinaci e Ricotta,100,Ritaglia dei dischi di pasta brisèè e mettile in delle tortiere della grandezza del disco. A parte cuoci gli spinaci. In una ciotola ammorbidisci la ricotta e aggiusta di sale e pepe. Aggiungi gli spinaci alla ricotta e un uovo. Versa il composto nelle tortiere piccole. Cuoci in forno per 20 minuti a 180 gradi.
+Spuntino,Polpettine di Tacchino,150,Preparare polpettine unendo in una ciotola carne macinata con pane grattugiato e uovo e spezie. Forma le polpettine. In una padella versa un filo d'olio e una volta caldo aggiungi le polpette e fai cuocere per 10-15 minuti.
 Spuntino,Roll di Salmone e Formaggio,120,Fette di salmone affumicato arrotolate con formaggio cremoso.
-Spuntino,Insalata di Couscous e Verdure,200,Insalata di couscous con verdure fresche.
-Spuntino,Spiedini di Mozzarella e Pomodorini,100,Spiedini con bocconcini di mozzarella e pomodorini.
-Spuntino,Barrette di Cereali e Frutta,100,Barrette fatte in casa con cereali e frutta secca.
+Spuntino,Insalata di Couscous e Verdure,200, Metti del couscous in una ciotola e aggiungi le spezie che preferisci. Riscalda dell'acqua in un pentolino e versala sul couscous fino a coprirlo. In una padella cuoci le verdure che preferisci con un filo d'olio. Passati 10 minuti sgrana il couscous con una forchetta e aggiungi le verdure cotte.
+Spuntino,Spiedini di Mozzarella e Pomodorini,100,Crea degli spiedini con bocconcini di mozzarella e pomodorini tagliati a metà.
+Spuntino,Barrette di Cereali e Frutta,100,Unisci in una ciotola frutta secca tritata e avena. Mescola. Aggiungi un cucchiaino di miele e cacao se vuoi. Su una leccarda con carta forno versa il composto e fai cuocere per 10 minuti a 200. Una volta cotto taglialo in rettangoli più piccoli.
 Spuntino,Patatine al Forno,150,Patatine croccanti cotte al forno.
-Spuntino,Mini Frittate con Erbe Aromatiche,120,Piccole frittate arricchite con erbe aromatiche.
+Spuntino,Mini Frittate con Erbe Aromatiche,120,Sbatti le uova con sale e pepe. Aggiungi le erbe aromatiche. Riscalda una padella con un filo d'olio e versa un mestolo di composto. Cuoci per qualche minuto fino a doratura e poi gira.
 Spuntino,Humus con Bastoncini di Verdure,150,Crema di humus servita con bastoncini di carote e cetrioli.
 Spuntino,Crackers con Formaggio e Marmellata,100,Crackers serviti con formaggio e marmellata.
 Spuntino,Frutta Fresca di Stagione,200,Frutta fresca tagliata a pezzi.
 Spuntino,Chips di Kale,50,Chips croccanti di cavolo riccio.
-Spuntino,Mini Sandwich con Uovo e Avocado,180,Mini sandwich con uovo sodo e avocado.
+Spuntino,Mini Sandwich con Uovo e Avocado,180,Porta dell'acqua ad ebollizione. Versa le uova intere e fai cuocere per 12 minuti. Raffredate le uova sbucciale e tagliale a fette. Pulisci l'avocado. Farcisci il panino.
 Spuntino,Toast con Marmellata e Burro,150,Toast con burro e marmellata.
 Spuntino,Melone e Prosciutto,150,Fette di melone avvolte in prosciutto crudo.
-Spuntino,Cheesecake in Mini Porzioni,120,Mini cheesecake con base di biscotto e crema di formaggio.
+Spuntino,Cheesecake in Mini Porzioni,120, Frulla dei biscotti con un filo d'olio vegetale. Prepara una crema con formaggio fresco e uova e se vuoi un cucchiaino di zucchero. In dei vasetti componi la tua cheesecake
 Spuntino,Yogurt con Frutta e Miele,150,Yogurt servito con frutta fresca e miele.
 Spuntino,Panino con Tacchino e Avocado,200,Panino farcito con tacchino e avocado.
 Spuntino,Spiedini di Frutta,150,Spiedini con pezzi di frutta assortita.
-Spuntino,Mini Pizze con Pomodoro e Basilico,150,Piccole pizze con pomodoro e basilico.
-Spuntino,Biscotti Salati al Parmigiano,80,Biscotti salati con parmigiano.
+Spuntino,Mini Pizze con Pomodoro e Basilico,150,Piccole pizzette del fornaio con pomodoro e basilico.
+Spuntino,Tocchetti di Parmigiano,80,Parmigiano tagliato a cubetti
 Spuntino,Guacamole con Tortilla Chips,150,Guacamole servito con tortilla chips.
 Spuntino,Edamame al Vapore,150,Edamame cotto al vapore e salato.
-Spuntino,Muffin Salati con Zucchine e Formaggio,120,Muffin salati con zucchine e formaggio.
+Spuntino,Muffin Salati con Zucchine e Formaggio,120,In una terrina sbatti le uova con formaggio grattuggiato e zucchine precedentemente lavate e grattuggiate. Aggiusta di sale e pepe.Aggiungi del lievito chimico non vanigliato e mescola. Versa in pirottini e fai cuocere per 25 minuti a 180°
 Spuntino,Frutta Secca Mista,100,Frutta secca assortita.
 Spuntino,Caprese Skewers,120,Spiedini con mozzarella
-Spuntino,Mini Tacos con Carne e Verdure,200,Mini tacos farciti con carne e verdure.
+Spuntino,Mini Tacos con Carne e Verdure,200,Mini tacos farciti con carne cotta alla griglia e verdure cotte al vapore.
 Spuntino,Panino con Hummus e Verdure,200,Panino farcito con hummus e verdure grigliate.
-Spuntino,Crepes con Ricotta e Miele,150,Crepes ripiene di ricotta e miele.
+Spuntino,Crepes con Ricotta e Miele,150,Per preparare le crepes sbatti in una ciotola uova con latte e farina. Fai riposare l'impasto per 30 minuti in frigo. Ora cuoci le crepes. Nel frattempo sbatti in una terrina a parte della ricotta e un cucchiaino di miele. Usa questo composto per farcire le tue crepes.
 Spuntino,Popcorn al Naturale,100,Popcorn senza burro.
 Spuntino,Chips di Patate Dolci,150,Chips croccanti di patate dolci.
-Spuntino,Mini Croissant con Marmellata,120,Mini croissant ripieni di marmellata.
+Spuntino,Mini Croissant con Marmellata,120,Mini croissant del fornaio ripieni di marmellata.
 Spuntino,Carote e Cetrioli con Salsa Yogurt,150,Carote e cetrioli serviti con salsa yogurt.
 Spuntino,Panino con Salame e Formaggio,200,Panino farcito con salame e formaggio.
 Spuntino,Barrette di Frutta e Noci,100,Barrette con frutta secca e noci.
 Spuntino,Salatini al Sesamo,80,Salatini croccanti al sesamo.
 Spuntino,Crema di Formaggio con Crackers,150,Crema di formaggio servita con crackers.
 Spuntino,Frutta a Cubetti con Spezie,150,Frutta a cubetti con una spruzzata di spezie.
-Spuntino,Mini Crocchette di Patate,120,Crocchette di patate dorate e croccanti.
-Spuntino,Insalata di Tonno e Fagioli,200,Insalata con tonno e fagioli.
+Spuntino,Mini chips di verdure,120,Chips di verdure non fritte ma al forno.
+Spuntino,Insalata di Tonno e Fagioli,200,Scola il tonno al naturale e i fagioli dal loro liquido e uniscili all'insalata tagliata e lavata. Aggiusta di olio e sale.
 Spuntino,Mini Pizza con Funghi e Mozzarella,150,Preparare l'impasto per la pizza con acqua e farina e lievito e un pizzico di sale. Far lievitare per 4/5 ore minimo e mantenere l'impasto al caldo. Stendere l'impasto su una teglia. Aggiungere i funghi tagliati a piacere la mozzarella tagliata olio e parmigiano. Cuocere in forno preriscaldato a 200° per 20 minuti.
 Spuntino,Tartine con Salmone e Aneto,100,Tartine con salmone affumicato e aneto.
 Spuntino,Spiedini di Mozzarella e Prosciutto,100,Spiedini con mozzarella e prosciutto crudo.
 Spuntino,Chips di Zucca,150,Chips croccanti di zucca.
-Spuntino,Mini Frittatine di Patate,120,Piccole frittatine di patate.
+Spuntino,Mini Frittatine di Patate,120,Sbatti le uova con sale e pepe. Aggiungi le patate lessate precedentemente. Riscalda una padella con un filo d'olio e versa un mestolo di composto. Cuoci per qualche minuto fino a doratura e poi gira.
 Spuntino,Frutta con Yogurt e Miele,150,Frutta fresca servita con yogurt e miele.
 Spuntino,Toast con Formaggio e Pomodoro,150,Toast farcito con formaggio e pomodoro.
 Spuntino,Mini Hamburger di Tacchino,180,Piccoli hamburger di tacchino.
-Spuntino,Polpette di Ceci,150,Polpette a base di ceci.
-Spuntino,Biscotti alla Cannella,80,Biscotti aromatizzati alla cannella.
-Spuntino,Insalata di Riso e Verdure,200,Insalata di riso con verdure fresche.
-Spuntino,Mini Wrap con Pollo e Verdure,200,Mini wrap farcito con pollo e verdure.
+Spuntino,Polpette di Ceci,150,Frulla i ceci con farina e spezie. Aggiungi un uovo. Forma le polpette e cuocile al forno per 10 minuti a 170 gradi.
+Spuntino,Biscotti alla Cannella,80,Per preparare i biscotti metti in una ciotola l'olio vegetale e la farina. Aggiungi un cucchiaino di zucchero. Impasta. Aggiungi un uovo con la cannella e finisci di impastare. Fai riposare la pasta per almen0 20 minuti. Poi stendila e forma i biscotti della forma che preferisci. Cuoci a 170 gradi per 20 minuti.
+Spuntino,Insalata di Riso e Verdure,200,Lessa il riso in abbondante acqua salata e aggiungi verdure crude che preferisci.
+Spuntino,Mini Wrap con Pollo e Verdure,200,Mini wrap farcito con pollo alla griglia e verdure.
 Spuntino,Frutta Fresca con Formaggio,150,Frutta fresca servita con formaggio cremoso.
 Spuntino,Crackers con Hummus e Olive,150,Crackers serviti con hummus e olive.
-Spuntino,Cheesecake al Limone in Mini Porzioni,120,Mini cheesecake al limone.
+Spuntino,Cheesecake al Limone in Mini Porzioni,120,Frulla dei biscotti con un filo d'olio vegetale. Prepara una crema con formaggio fresco e uova e se vuoi un cucchiaino di zucchero. Aggiungi del succo di limone. In dei vasetti componi la tua cheesecake
 Spuntino,Barrette di Riso e Miele,100,Barrette croccanti di riso e miele.
 Spuntino,Frutta a Cubetti con Yogurt,150,Frutta a cubetti servita con yogurt.
 Spuntino,Mini Hot Dog con Senape,150,Mini hot dog servito con senape.
-Spuntino,Panino con Uovo e Spinaci,200,Panino farcito con uovo e spinaci.
+Spuntino,Panino con Uovo e Spinaci,200,Cuoci le uova intere in abbondante acqua per 12 minuti. A parte cuoci gli spinaci. Farcisci un panino. 
 Spuntino,Popcorn al Formaggio,100,Popcorn aromatizzati al formaggio.
-Spuntino,Mini Muffin al Cioccolato,120,Mini muffin al cioccolato.
+Spuntino,Mini Muffin al Cioccolato,120,Per preparare l'impasto dei muffin inizia preriscaldando il forno a 180 gradi. In una ciotola grande setaccia la farina con il lievito ed il sale e mescola. In un'altra ciotola sbatti le uova con il latte e l'olio. Se vuoi aggiungi degli aromi. Versa gli ingredienti liquidi nei secchi poco per volta e mescola lentamente. Ora aggiungi il cacao e mescola. Versa l'impasto nei pirottini ed inforna. Cuoci per 18-20 minuti."
 Spuntino,Spiedini di Frutta e Formaggio,150,Spiedini con pezzi di frutta e formaggio.
-Spuntino,Mini Calzoni con Ricotta e Prosciutto,150,Piccoli calzoni ripieni di ricotta e prosciutto.
+Spuntino,Mini Calzoni con Ricotta e Prosciutto,150,In una ciotola metti la farina con acqua e lievito di birra. Impasta. Aggiusta di sale e fai lievitare per qualche ora. Una volta lievitato stendi l'impasto forma dei dischi e farcisci con ricotta e prosciutto. Chiudili a metà e cuoci in forno per 15 minuti a 200°
 Spuntino,Panino con Tonno e Olive,200,Panino farcito con tonno e olive.
 Spuntino,Barrette di Granola e Frutta,100,Barrette di granola con frutta secca.
-Spuntino,Mini Burritos con Carne e Fagioli,200,Mini burritos farciti con carne e fagioli.
+Spuntino,Mini toast con Carne e Fagioli,200,Mini toast farciti con carne e fagioli.
 Spuntino,Toast con Burro di Arachidi e Banana,150,Toast con burro di arachidi e banana.
 Spuntino,Patatine di Cavolo Riccio,100,Patatine croccanti di cavolo riccio.
 Spuntino,Mini Cheeseburgers,180,Mini cheeseburgers serviti con condimenti leggeri.
 Spuntino,Crackers con Salsa di Pomodoro,150,Crackers serviti con salsa di pomodoro.
-Spuntino,Mini Pancake con Sciroppo d'Acero,120,Mini pancake serviti con sciroppo d'acero.
+Spuntino,Mini Pancake con Sciroppo d'Acero,120,Prepara i pancake mescolando in una ciotola uova e zucchero. Aggiungi il latte e il lievito chimico e continua a mescolare. Aggiungi la farina e mescola. Lascia riposare per 30 minuti. Scalda una padella con una noce di burro e cuoci i pancake. Una volta pronti spostali su un piatto e guarnire con sciroppo d'acero.
 Spuntino,Yogurt con Cereali e Frutta,150,Yogurt servito con cereali e frutta.
 Spuntino,Mini Piadine con Prosciutto e Rucola,150,Piccole piadine farcite con prosciutto e rucola.
 Spuntino,Frutta Secca con Semi di Zucca,100,Frutta secca mista con semi di zucca.
@@ -323,4 +322,3 @@ Spuntino,Mini Frittelle di Zucca,120,Frittelle leggere e croccanti di zucca.
 Spuntino,Roll di Tacchino con Formaggio Spalmabile,100,Fette di tacchino arrotolate con formaggio spalmabile.
 Spuntino,Panino con Salame e Peperoni,200,Panino farcito con salame e peperoni grigliati.
 Spuntino,Yogurt con Muesli e Frutti di Bosco,150,Yogurt servito con muesli e frutti di bosco freschi.
-

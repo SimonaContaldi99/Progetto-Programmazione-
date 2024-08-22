@@ -11,8 +11,12 @@ if not os.path.exists('static'):
     os.makedirs('static')
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+def homepage():
+    return render_template('homepage.html')  # Servire la homepage all'avvio
+
+@app.route('/index.html')
+def index():
+    return render_template('index.html')  # Servire la pagina index
 
 @app.route('/calcola', methods=['POST'])
 def calcola():
@@ -39,7 +43,6 @@ def calcola():
         # Creazione del grafico a torta e barre
         crea_grafico_ripartizione(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione.png')
         crea_grafico_ripartizione_barre(colazione, pranzo, cena, spuntino, 'static/grafico_ripartizione_barre.png')
-        
 
         # Lettura del file CSV
         if not os.path.isfile('ricette_passaggi.csv'):
@@ -47,7 +50,7 @@ def calcola():
         
         df = pd.read_csv('ricette_passaggi.csv')
 
-        #definizione funzione per filtrare le ricette in base alle calorie
+        # Definizione funzione per filtrare le ricette in base alle calorie
         def filtra_ricette(tipo, calorie_max):
             ricette = df[(df['Tipo'] == tipo) & (df['Calorie'] <= calorie_max)]
             if ricette.empty:
@@ -56,7 +59,7 @@ def calcola():
         
         giorni_settimana = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']
 
-        #definizione menù settimanale
+        # Definizione menù settimanale
         menu_settimanale = {giorno: {
             'Colazione': filtra_ricette('Colazione', colazione),
             'Pranzo': filtra_ricette('Pranzo', pranzo),
@@ -75,13 +78,13 @@ def calcola():
 
         ordine_pasti = ["Colazione", "Pranzo", "Spuntino", "Cena"]
 
-        #stabilire i pasti giornalieri in base alle kcal
+        # Stabilire i pasti giornalieri in base alle kcal
         giorni = list(media_kcal.keys())
         for giorno in giorni:
             pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
             medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
 
-            #creazione grafico
+            # Creazione grafico
             fig, ax = plt.subplots()
             ax.plot(pasti_giornalieri, medie_pasti, label="Andamento kcal con ricette")
             ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Andamento kcal calcolato")
@@ -93,13 +96,41 @@ def calcola():
             plt.close(fig)  
 
         return render_template('risultato.html', 
-                               bmr=bmr, tdee=tdee,bmi=bmi,
+                               bmr=bmr, tdee=tdee, bmi=bmi,
                                colazione=colazione, pranzo=pranzo, cena=cena, spuntino=spuntino, esito=esito, sport=sport,
                                menu_settimanale=menu_settimanale)
 
     except (ValueError, FileNotFoundError) as e:
         error_message = str(e)
         return render_template('index.html', error=error_message)
+
+@app.route('/ricerca', methods=['GET'])
+def ricerca():
+    query = request.args.get('ricerca_ricetta', '')
+    tipo = request.args.get('tipologia', '')
+
+    if not os.path.isfile('ricette_passaggi.csv'):
+        return "File non trovato", 404
+
+    df = pd.read_csv('ricette_passaggi.csv')
+
+    # Filtrare per nome della ricetta se specificato
+    if query:
+        df = df[df['Ricetta'].str.contains(query, case=False, na=False)]
+    
+    # Filtrare per tipo se specificato
+    if tipo:
+        df = df[df['Tipo'] == tipo]
+
+    # Convertire i dati filtrati in una lista di dizionari per la visualizzazione
+    ricette = df.to_dict(orient='records')
+
+    return render_template('risultati_ricerca.html', ricette=ricette)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

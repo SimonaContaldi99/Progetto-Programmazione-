@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Risultati della Ricerca</title>
-    <style>
+    <title>Risultati della Ricerca</title> 
+    <!-- Il widget di Google Translate -->
+    <meta name="google-translate-customization" content="">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'it'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Definizione CSS -->
+    <style> 
         body {
             font-family: 'Arial', sans-serif;
             background-color: rgb(235, 245, 235);
@@ -48,7 +58,7 @@
             font-size: 16px;
             color: #333;
             position: relative;
-            padding-bottom: 70px; /* Aggiungi spazio per le calorie */
+            padding-bottom: 70px; 
         }
 
         strong {
@@ -115,9 +125,18 @@
         .button:hover {
             background-color: #3d8e4f;
         }
+
+        #google_translate_element {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
     </style>
 </head>
+<!-- Definizione pagina HTML -->
 <body>
+    <div id="google_translate_element"></div>
     <div class="container">
         <h1>Risultati della Ricerca</h1>
         {% if ricette %}

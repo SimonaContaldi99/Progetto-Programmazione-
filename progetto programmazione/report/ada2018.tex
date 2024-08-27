@@ -1,0 +1,114 @@
+%
+% File acl2014.tex
+%
+% Contact: g.colavizza@uva.nl
+%%
+%% Based on the style files for ACL-2013, which were, in turn,
+%% Based on the style files for ACL-2012, which were, in turn,
+%% based on the style files for ACL-2011, which were, in turn, 
+%% based on the style files for ACL-2010, which were, in turn, 
+%% based on the style files for ACL-IJCNLP-2009, which were, in turn,
+%% based on the style files for EACL-2009 and IJCNLP-2008...
+
+%% Based on the style files for EACL 2006 by 
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt]{article}
+\usepackage{acl2014}
+\usepackage{times}
+\usepackage{url}
+\usepackage{latexsym}
+
+
+%\setlength\titlebox{5cm}
+
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
+
+\title{PyKcal}
+
+\author{
+  Simona Contaldi\\
+  {\tt simona.contaldi@studio.unibo.it} \\
+  \and
+  Andrea A. Russano\\
+  {\tt andrea.russano@studio.unibo.it} \\
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Il progetto in questione si pone l’obiettivo di analizzare, sulla base di diversi parametri quali peso, età e altezza di un soggetto, quale può essere una organizzazione ordinata e bilanciata del proprio piano alimentare. Il fine ultimo è quello di fornire un piano settimanale personalizzato per la gestione della propria alimentazione, attraverso l'inclusione di ricette tra cui poter scegliere in base alle calorie necessarie da assumere per il mantenimento o il raggiungimento del proprio perso ideale. Il tutto attraverso una web app creata con Flask.
+\end{abstract}
+
+
+\section{Introduzione}
+
+Il progetto nasce dall’idea di poter mettere in pratica le tecnologie apprese durante il corso delle lezioni, cercando lì dove possibile di approfondirle e di potersi mettere alla prova nella realizzazione di task che possano avere anche un'applicazione pratica nella vita di tutti i giorni. 
+L'intento è stato quello di poter acquisire una maggiore consapevolezza degli strumenti appresi e anche una migliore confidenza e approccio autonomo nel loro utilizzo. \\
+A tal proposito si è deciso di realizzare, seppur in modo non professionistico, una web app che potesse essere di utilizzo a chiunque e che potesse rispondere a una reale esigenza concreta.\\ Nello specifico, si è voluto creare una web app che si occupasse di \textit{analizzare l’indice corporeo} di ogni utente e, a partire da questi dati calcolati tramite formule specifiche, fornire un andamento consigliato per quanto riguarda la ripartizione delle calorie nel corso della giornata. Affinché l'utente, attraverso la web app realizzata, potesse accedere in modo facile e intuitivo alle informazioni necessarie, monitorare le proprie scelte alimentari e adattarle in base alle giornate. \\La realizzazione del progetto ha avuto inizio con la creazione di \textit{un dataset sviluppato da zero}, così che potesse rispondere a tutte le esigenze specifiche a cui si è andati incontro nel corso della realizzazione del progetto. All’interno del dataset è possibile trovare 323 ricette suddivise nei principali pasti della giornata:\textit{ colazione, pranzo, spuntino e cena.} All'interno del dataset, inoltre, ogni ricetta è accompagnata dalle informazioni caloriche di riferimento e da una breve descrizione che possa illustrare in breve come poter realizzare i piatti proposti.\\
+Una volta realizzato il dataset, rappresentante il nucleo centrale del lavoro, si è passati alla fase successiva. Vale a dire l'elaborazione delle varie formule e delle analisi necessarie per poter realizzare un corretto piano alimentare personalizzato in base all'utente. 
+
+\section{Calcolo calorico}
+
+La parte iniziale del lavoro svolto si è concentrata innanzitutto sulla ricerca e sull'implementazione delle formule necessarie per poter ottenere il risultato desiderato, ovvero la corretta ripartizione delle calorie giornaliere su cui ciascun individuo dovrebbe basarsi per mantenere uno stile di vita sano e bilanciato. \\
+I calcoli in questione sono disponibili nell’apposito file \textit{“calcolo\_calorico.py"} al cui interno è possibile trovare le formule matematiche necessarie di cui ci si è serviti.\\Con l’aiuto delle librerie Python studiate anche a lezione, ovvero Numpy e Matplotlib.pyplot, è stato possibile creare grafici che potessero rappresentare l'andamento della ripartizione calorica basale, comparata con quella possibile in base all'attività fisica svolta. L'aggiunta dei grafici ha permesso di rappresentare in modo chiaro e immediato la distribuzione delle calorie a seconda delle caratteristiche individuali. Il tutto grazie alle formule di partenza relative all’età, all’altezza, al sesso, al peso e per finire anche al livello di attività fisica di ognuno.
+\subsection{Elaborazione formule} Le formule utilizzate sono inerenti principalmente al calcolo dei valori corporei (nello specifico sesso, peso, altezza ed età), dei livelli di attività personale e dell’indice di massa corporea:
+\begin{itemize}
+\item Le prime formule utilizzate sono state necessarie per poter identificare la corrispettiva ripartizione calorica di un soggetto che si sottopone all’utilizzo della web app.
+\item Il calcolo del  BMI (\textit{indice di massa corporea}) si è invece basato sui dati precedentemente ottenuti per poter fornire dei consigli in merito al tipo di attività fisica da associare all’alimentazione settimanale proposta. In particolare, per il calcolo del fabbisogno energetico è stato deciso di utilizzare \textit{l'equazione di Harris-Benedict}, nella versione rivista da Miffin e St. Jeor nel 1990 \footnote{ Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO (1990). "A new predictive equation for resting energy expenditure in healthy individuals". The American Journal of Clinical Nutrition. 51 (2): 241–7. doi:10.1093/ajcn/51.2.241. PMID 2305711.}.\\ Si è optato per questa scelta perchè oggigiorno risulta essere la più utilizzata dagli esperti, oltre che una delle più precise in circolazione.
+\end{itemize}
+
+I risultati ottenuti sono stati, poi, confrontati con la valutazione dei livelli di attività fisica tra cui poter scegliere (che vanno da un minimo di 1, che corrisponde a un livello sedentario, fino a un massimo di 5, ovvero il massimo livello di attività settimanale) e quelli ottenuti in relazione al BMI (come Sottopeso, Normopeso, Sovrappeso ecc …). Queste classificazioni sono state stabilite sulla base di dati ufficiali diffusi a livello ministeriale \footnote{https://www.salute.gov.it/}. 
+\subsection{Plotting} Con i risultati realizzati e generati all’interno del file “calcolo\_caloro.py” sono stati realizzati i plot di riferimento, in modo tale da poter avere una visione più concreta della ripartizione calorica calcolata e fornire anche una maggiore comprensione dei dati. Il processo si è rivelato lineare nella messa in pratica, portando alla creazione di tre grafici differenti per rappresentare diversi aspetti. \\
+Il primo grafico è stato realizzato mediante\textit{ una rappresentazione a torta}: mostra una possibile suddivisione in percentuale della gestione dei pasti giornalieri. \\
+Nel secondo grafico, sfruttando sempre i dati ottenuti dalle formule iniziali, è stata fornita invece \textit{una rappresentazione a barre:}  in questo modo è stato possibile fornire una visione grafica anche della suddivisione calorica di ogni pasto e del loro rapporto comparativo.\\
+In un secondo momento è stato, infine, aggiunto un terzo grafico nella seconda parte della pagina centrale del progetto. Il \textit{grafico a linee}, che è possibile visualizzare all’interno del comando “\textit{Bilancio}”, si è rivelato particolarmente utile per tenere traccia dell'andamento della propria ripartizione calorica. Mette a confronto l’andamento giornaliero delle calorie stabilite secondo le formule iniziali e l’andamento effettivo se si segue il piano alimentare suggerito, consentendo così di monitorare le fluttuazioni giornaliere.\\
+Tutti i grafici sono stati generati ed esportati come immagini PNG, così da poter essere facilmente incorporate all’interno della web app.
+\section{Calendario settimanale}
+La seconda parte significativa del progetto è stata rappresentata dalla realizzazione di un piano alimentare settimanale. L’obiettivo principale era fornire un calendario settimanale che, per ogni giornata, proponesse diverse opzioni di pasti per ogni giornata (per la precisione, tre ricette per ogni pasto tra cui poter scegliere). A tal proposito, il dataset creato inizialmente è stato realizzato cercando di mettere al suo interno una vasta gamma di ricette e, soprattutto, una maggiore diversificazione di calorie così da poter comprendere più fasce di interesse.\\
+La creazione del dataset ha rappresentare un momento chiave affinché potesse rispondere al meglio a tutti i tipi di risultati e di individui.\\
+Per costruire il piano settimanale è stata effettuata una procedura che, all’interno del dataset,  selezionasse in modo casuale le ricette sulla base del tipo (colazione, pranzo, spuntino e cena) e delle calorie necessarie, così da fornire una maggiore flessibilità al piano. Il processo di selezione si basa sul filtraggio: qualora, però, non fossero presenti all'interno del dataset delle ricette che soddisfino in modo adeguato e preciso le calorie richieste, è stato deciso di ammettere un margine di tolleranza in eccesso. 
+\section{Barra di ricerca} Una terza fase del progetto ha visto la realizzazione di una barra di ricerca all'interno della web app che permette di esplorare il dataset nella sua totalità in modo veloce e generale.\\
+Questa specifica funzione è stata inserita all’interno dell’Homepage e permette agli utenti di inserire una o più parole chiave. In aggiunta vi è la funzione, non obbligatoria, anche di filtrare il pasto di riferimento così da poter ridurre il campo d'azione della propria ricerca. In alternativa è possibile visualizzare tutte le ricette stampate e presenti all’interno del dataset, senza dover inserire nessuna parola chiave, organizzate e con annessa la descrizione della procedura per realizzare i singoli pasti. 
+
+\section{Gestione pagine}Per garantire quanto più possibile una navigazione facile e intuitiva all'interno della web app, è stato deciso di strutturarla su più pagine con l'utilizzo \textit{dell'HTML e di Flask. }\\
+La prima pagina a cui si va incontro, aprendo la web app, è quella di Homepage. Qui l'utente ha la possibilità di scegliere tra le due macro funzioni presenti all’interno del sito: ovvero quella di Calcolo Calorico e quella di ricerca della ricetta. \\
+Nel primo caso, si aprirà una seconda pagina che permette di inserire i propri dati personali richiesti per poter effettuare il calcolo calorico e visualizzare così un riepilogo personale per quanto riguarda la gestione del piano alimentare settimanale. Nel secondo caso, invece, vi è la possibilità di ricerca attraverso una parola chiave e il filtraggio del tipo di pasto (entrambi opzionali): il risultato fornirà un’ultima pagina in cui sarà possibile visionare un elenco delle ricette proposte e presenti all’interno del dataset.\\
+All'interno di ognuna delle pagine è infine presente anche un comando specifico: mediante la funzione a tendina, vi è la possibilità di scegliere la propria lingua di riferimento e tradurre la pagina in questione. E' stato possibile mediante l'implementazione, in HTML del \textit{pacchetto "Google translate customization"} con cui si ottiene la funzione di "Translate element" che va dall'italiano (lingua principale del sito) verso altre lingue. Il procedimento è legato alla pagina madre di Google Translate. 
+
+\section{Conclusioni} In conclusione, il progetto ha fornito la possibilità di mettere alla prova quanto appreso nel corso delle lezioni ma anche di approfondire determinati aspetti e conoscenze teoriche (come la cura della parte più estetica del progetto, seppur in piccola parte e in modo superficiale) e perfezionarne altri che sono stati così rafforzati. Il risultato è stata una web app quanto più possibile simile all’idea di partenza, sebbene sono state necessarie alcune modifiche e rivalutazioni nel corso della realizzazione. 
+\section{Divisione del lavoro} Il lavoro è stato equamente distribuito e suddiviso tra entrambi i partecipanti al progetto. Ci sono stati, in qualsiasi fase dei vari procedimenti, una consultazione e un confronto attivi e costruttivi, disponibili all'ascolto e soprattutto al confronto nel suggerimento di possibili modifiche o migliorie da apportare.\\
+Tutte le fasi del progetto sono state affrontante e trattate da entrambi i partecipanti in modo alternato collaborativo, senza prevaricazione e con una distribuzione del lavoro equa e omogenea.\\
+Nello specifico, però, Russano Andrea si è occupato in modo individuale dell'inserimento della funzione di traduzione nell'html delle pagine. Mentre Contaldi Simona si è personalmente dedicata all'elaborazione dei grafici. 
+
+\begin{thebibliography}{}
+
+\bibitem{NumPy}
+NumPy documentation, \url{https://numpy.org/doc/}
+
+\bibitem{Pandas}
+spaCy documentation, \url{https://spacy.io/usage/linguistic-features}
+
+\bibitem{matplotlib}
+Matplotlib documentation, \url{https://matplotlib.org/stable/users/index.html}
+
+\bibitem{flask}
+Flask documentation, \url{https://flask.palletsprojects.com/en/3.0.x}
+
+\bibitem{Jinja2}
+Jinja2 documentation, \url{https://jinja.palletsprojects.com/en/3.1.x/}
+
+\bibitem{Countourpy}
+Bootrap documentation, \url{https://getbootstrap.com/docs/5.3/}
+
+\end{thebibliography}
+
+
+\end{document}

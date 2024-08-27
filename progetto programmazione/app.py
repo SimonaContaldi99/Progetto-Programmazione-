@@ -16,13 +16,13 @@ if not os.path.isfile('ricette_passaggi.csv'):
 
 @app.route('/')
 def homepage():
-    return render_template('homepage.html')  # Servire la homepage all'avvio
+    return render_template('homepage.html')  # Rimanda alla homepage all'avvio
 
 @app.route('/index.html')
 def index():
-    return render_template('index.html')  # Servire la pagina index
+    return render_template('index.html')  # Rimanda alla pagina index
 
-@app.route('/calcola', methods=['POST'])
+@app.route('/calcola', methods=['POST']) # Rimanda alla pagina di calcolo
 def calcola():
     sesso = request.form['sesso']
     età = request.form.get('età')
@@ -88,7 +88,7 @@ def calcola():
             pasti_giornalieri = [pasto for pasto in ordine_pasti if pasto in media_kcal[giorno]]
             medie_pasti = [media_kcal[giorno].get(pasto, None) for pasto in ordine_pasti]
 
-            # Creazione grafico
+            # Creazione grafico bilancio
             fig, ax = plt.subplots()
             ax.plot(pasti_giornalieri, medie_pasti, label="Andamento kcal con ricette")
             ax.plot(ordine_pasti, [colazione, pranzo, spuntino, cena], label="Andamento kcal calcolato")
@@ -108,7 +108,7 @@ def calcola():
         error_message = str(e)
         return render_template('index.html', error=error_message)
 
-@app.route('/ricerca', methods=['GET'])
+@app.route('/ricerca', methods=['GET']) #Ricerca ricette
 def ricerca():
     query = request.args.get('ricerca_ricetta', '')
     tipo = request.args.get('tipologia', '')

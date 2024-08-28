@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Calcolo Calorico</title>
+    
+    <!-- Il widget di Google Translate -->
+    <meta name="google-translate-customization" content="">
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'it'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- CSS per migliorare l'aspetto -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(235, 245, 235);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center; 
+            margin-right: 20px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .tooltip {
+            position: relative; 
+            display: inline-block; 
+            cursor: pointer; 
+            color: #346234;
+            font-size: medium;
+        }
+
+        .tooltiptext {
+            font-size: small;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden; 
+            width: 200px; 
+            background-color: #6d6c6c; 
+            color: #fff; 
+            text-align: left; 
+            border-radius: 6px; 
+            padding: 5px; 
+            position: absolute; 
+            z-index: 1; 
+            bottom: 100%; 
+            left: 105%;
+            margin-left: 10px; 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible; 
+            opacity: 1; 
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #52b664;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #52b664;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #google_translate_element {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body> <!-- Creazione pagina HTML -->
+    <div id="google_translate_element"></div>
+
+    <h1>Calcolo Calorico<br>
+    &#127822;&#9997;</h1>
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+    <br>
+    <form action="/calcola" method="POST">
+        <label for=" "sesso"> Sesso: </label>
+            <input type="radio" name="sesso" value="M">
+            M
+            <input type="radio" name="sesso" value="F">
+            F
+
+        <label for="età">Età:</label>
+        <input type="number" id="età" name="età" required>
+        
+        <label for="altezza">Altezza (cm):</label>
+        <input type="number" id="altezza" name="altezza" required>
+        
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" required>
+        
+        <label for="livello_attività">Livello di attività (1-5):
+        <span class="tooltip">&#x2139;
+            <span class="tooltiptext"> &#x25C7; 1.<i>Sedentario </i>: attività fisiche minime
+                <br>
+                &#x25C7; 2.<i>Poco attivo</i>: attività fisica 1 giorno a settimana
+                <br>
+                &#x25C7; 3.<i>Normale</i>: attività fisica 2-3 giorni a settimana
+                <br>
+                &#x25C7; 4.<i>Attivo</i>: attività fisica 3 giorni a settimana
+                <br>
+                &#x25C7; 5.<i>Molto attivo</i>: attività fisica 3-5 giorni a settimana
+            </span>
+        </span></label>
+        <input type="number" id="livello_attività" name="livello_attività" min="1" max="5" required>
+        
+        <input type="submit" value="Calcola">
+    </form>
+</body>
+</html>

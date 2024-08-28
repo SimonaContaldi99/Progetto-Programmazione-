@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- Il widget di Google Translate -->
+    <meta name="google-translate-customization" content="">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'it'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- CSS per migliorare l'aspetto -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(235, 245, 235);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        h1 {
+            color: #355e68;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            text-align: center;
+            font-size: 40px;
+            text-shadow: 1px 1px 2px #d7d7d7;
+        }
+
+        h2 {
+            color : #346234;
+            font-size: 45px;
+            text-shadow: 1px 1px 2px #d7d7d7;
+        }
+
+        h3 {
+            color : #346234;
+            font-size: 45px;
+            margin: 0px 0;
+            text-shadow: 1px 1px 2px #d7d7d7;
+        }
+
+        h4 {
+            color: #355e68;
+            font-size: 15px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px; 
+            margin: 0; 
+        }
+
+            
+        hr {
+            border: none;
+            height: 2px;
+            background-color: rgb(225, 225, 225); 
+            margin:0px 0; 
+            width: 90%; 
+        }
+
+        .search-container {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-container input[type="text"] {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .search-container .dropdown {
+            flex: 1;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container .dropdown select {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .search-container button {
+            flex: 1;
+            background-color: #52b664;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #3d8e4f;
+        }
+
+        .button-container {
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            background-color: #52b664;
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #3d8e4f;
+        }
+
+        #google_translate_element {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body> <!-- Creazione pagina html -->
+    <div id="google_translate_element"></div>
+    <h1><i>PyKcal</h1></i>
+    <br>
+    <h2><b> Trova la tua ricetta &#128269;</b></2>
+    <div class="search-container">
+        <form action="/ricerca" method="get" style="display: flex; width: 100%;">
+            <input type="text" id="ricerca_ricetta" name="ricerca_ricetta" placeholder="Inserisci una parola chiave...">
+            <div class="dropdown">
+                <select name="tipologia">
+                    <option value="">Tipologia</option>
+                    <option value="Colazione">Colazione</option>
+                    <option value="Pranzo">Pranzo</option>
+                    <option value="Spuntino">Spuntino</option>
+                    <option value="Cena">Cena</option>
+                </select>
+            </div>
+            <button type="submit">Cerca</button>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <h3><b> Il tuo piano alimentare 🧘‍♂️</b></h3>
+    <br>
+    <div class="button-container">
+        <a href="index.html" class="button">Calcola</a>
+    </div>
+    <h4> Sviluppato da Contaldi S. e Russano A. </h4> <!-- Autori -->
+</body>
+</html>
+

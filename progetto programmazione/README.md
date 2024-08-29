@@ -10,6 +10,7 @@ Il dataset sfruttato all'interno del progetto è stato creato interamente da zer
 ## A tentative list of milestones for the project
 Il progetto è stato sviluppato step by step, cercando di suddividerlo in macro aree così da poterlo realizzare in modo più logistico e ordinato. La prima fase si è così concentrata sulla creazione del dataset e sulla sua raffinazione, soprattutto per quanto riguarda le descrizione delle ricette. La seconda fase ha visto una ricerca delle formule matematiche da poter usare per il calcolo calorico basale e il BMI, e una loro esecuzione. La terza fase del progetto ha comportato la creazione della sua parte centrale, ovvero la realizzazione del piano alimentare settimanale giorno per giorno, con anche realizzazione dei grafici. L'ultima fase del progetto ha infine visto l'aggiunta di una sezione che permette di navigare, nella sua totalità, il dataset e una maggiore cura e attenzione nella grafica estetica della web app.
 ## Documentation
+"Per una corretta visualizzazione si consiglia di aprire sull'editor di codice utilizzato la cartella "progetto programmazione""
 Per visualizzare il progetto è necessario scaricare le dipendenze necessarie con il comando: 
 pip install - r requirements.txt 
 Lanciare il server Flask dalla pagina:

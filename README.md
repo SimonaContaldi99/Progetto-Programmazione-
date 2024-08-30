@@ -9,12 +9,13 @@ Le questioni affrontate nel corso dell'elaborazione del progetto ruotavano intor
 Il dataset sfruttato all'interno del progetto è stato creato interamente da zero, così da poter essere gestito in modo più facile e soprattutto in modo tale da poterlo rendere più adatto alle esigenze riscontrate nel corso della realizzazione del progetto, rispetto invece a un dataset già disponibile ma che avrebbe vincolato alcune scelte e necessità. Le ricette presenti all'interno del dataset, che sono 323, sono dipartite in base ai principali pasti della giornata (colazione, pranzo, spuntino e cena) con annesse le calorie di riferimento e una breve descrizione del procedimento per poterle realizzare. 
 ## A tentative list of milestones for the project
 Il progetto è stato sviluppato step by step, cercando di suddividerlo in macro aree così da poterlo realizzare in modo più logistico e ordinato. La prima fase si è così concentrata sulla creazione del dataset e sulla sua raffinazione, soprattutto per quanto riguarda le descrizione delle ricette. La seconda fase ha visto una ricerca delle formule matematiche da poter usare per il calcolo calorico basale e il BMI, e una loro esecuzione. La terza fase del progetto ha comportato la creazione della sua parte centrale, ovvero la realizzazione del piano alimentare settimanale giorno per giorno, con anche realizzazione dei grafici. L'ultima fase del progetto ha infine visto l'aggiunta di una sezione che permette di navigare, nella sua totalità, il dataset e una maggiore cura e attenzione nella grafica estetica della web app.
-## Documentation
-"Per una corretta visualizzazione si consiglia di aprire sull'editor di codice utilizzato la cartella "progetto programmazione""
-Per visualizzare il progetto è necessario scaricare le dipendenze necessarie con il comando: 
-pip install - r requirements.txt 
-Lanciare il server Flask dalla pagina:
-app.py
-Visitare il link ottenuto come risultato per visualizzare il sito web generato:
-http://127.0.0.1:5000
-Si aprirà la homepage: qui si potrà decidere tra i due task principali, il Calcolo Calorico e la ricerca delle ricette. Nel primo caso otteniamo una seconda pagina in cui inserire i dati personale che rimanda, in un terza pagina, al riepilogo del proprio piano alimentare settimanale. Nel secondo possiamo navigare nel dataset di ricette a partire da una parola chiave e un filtraggio del tipo di pasto.
+## Documentation & Installation
+Documentation per l'utilizzo
+Per una corretta visualizzazione bisogna:
+1. Se si usa il link per il sito web online: cliccare il link che reindirizza alla homepage: https://pykcal.pythonanywhere.com/ (e leggere il punto 7). Si consiglia di aprire il link dal computer per una corretta visualizzazione dell'html 
+2. Se invece si apre la repository: aprire la cartella "progetto programmazione" presente al suo interno  
+3. Scaricare la cartella ed estrarre il contenuto 
+4. Caricare sul proprio editor di preferenza la cartella. 
+5. Affinché il progetto venga visualizzato nel modo corretto, bisogna scaricare le dipendenze: #pip install - r requirements.txt
+6. Eseguire lo script Python  "app.py". Questo lancerà un'istanza Flask e la Web app sarà disponibile localmente all'indirizzo: http://127.0.0.1:5000
+7.  Qui si aprirà la homepage. Si potrà decidere tra i due task principali, il Calcolo Calorico e la ricerca delle ricette. Nel primo caso otteniamo una seconda pagina in cui inserire i dati personale che rimanda, in un terza pagina, al riepilogo del proprio piano alimentare settimanale. Nel secondo possiamo navigare nel dataset di ricette a partire da una parola chiave e un filtraggio del tipo di pasto.
